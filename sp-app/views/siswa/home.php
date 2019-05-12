@@ -2,7 +2,7 @@
 <div id="card-stats" style="display: non">
   <div class="row mt-1">
   <?php 
-  if ($GLOBALS['cfg']->XElearning == 1) {
+  if ($this->m_config->config->XElearning == 1) {
   ?>
 
     <a href="<?= base_url("siswa/pelajaran"); ?>">
@@ -22,7 +22,7 @@
     </a>
     <?php
     } 
-    if ($GLOBALS['cfg']->XCbt == 1) {
+    if ($this->m_config->config->XCbt == 1) {
     ?>
 
     <a href="<?= base_url("siswa/ujian"); ?>">

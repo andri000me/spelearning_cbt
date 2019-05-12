@@ -21,10 +21,10 @@
 									<td align="center" style="font-weight:bold">
 										<font color="#" >KARTU PESERTA <br> UJIAN BERBASIS KOMPUTER<br>
 											<?= strtoupper($tes->XNamaUjian) ?><br/>
-											<?= $GLOBALS['sp']['XSekolah']; ?></br>
+											<?= $this->m_config->cfg['XSekolah']; ?></br>
 										</font> <?= $this->m_config->get_tahun_ajaran(); ?></br>
 									</td>
-									<td><img src="<?= base_url("asset/uploads/".$GLOBALS['sp']['XLogo']); ?>" height="40"></td>
+									<td><img src="<?= base_url("asset/uploads/".$this->m_config->cfg['XLogo']); ?>" height="40"></td>
 								</tr>
 								</tbody>
 							</table>
@@ -37,16 +37,16 @@
 					<tr><td>&nbsp;Jurusan</td><td>:</td><td><?php echo "$a[XKodeJurusan] "; ?></td></tr>
 					<!-- <tr><td>&nbsp;Sesi - Ruang</td><td>:</td><td><?php echo "$a[XSesi] - $a[XRuang]"; ?></td></tr> -->
 					<tr><td rowspan="3" align="center"><img src="<?= base_url("asset/uploads/foto_siswa/".$a['XFoto']); ?>" height="65px" border="thin solid red"></td>
-					<td colspan="2" valign="top" align="center">Kepala<br><?= $GLOBALS['sp']['XSekolah']; ?></td></tr>
+					<td colspan="2" valign="top" align="center">Kepala<br><?= $this->m_config->cfg['XSekolah']; ?></td></tr>
 					<td style="font-size:12px;font-weight:bold;" colspan="2" align="center">Ttd ,</td>
-					<tr><td colspan="2" align="center"><?= $GLOBALS['sp']['XKepSek'] ?></td></tr>
+					<tr><td colspan="2" align="center"><?= $this->m_config->cfg['XKepSek'] ?></td></tr>
 					</tbody>
 				</table>
 			</div>
 			<?php
 			if ($i==$sudah) {
 				$sudah+=$batas;
-				echo "</div><small>Copyright &copy; ".date("Y | ").$GLOBALS['sp']['XSekolah']."</small></div><div class='page'><div class='row'>";
+				echo "</div><small>Copyright &copy; ".date("Y | ").$this->m_config->cfg['XSekolah']."</small></div><div class='page'><div class='row'>";
 			}
 			$i++;
 		}

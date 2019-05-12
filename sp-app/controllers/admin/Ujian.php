@@ -19,7 +19,7 @@ class Ujian extends CI_Controller {
 		$data['title']='Kelola '.$this->judul;
 
 		if ($GLOBALS['lvl'] != 1 ) {
-			if ($GLOBALS['cfg']->XGuru2Admin != 1) {
+			if ($this->m_config->config->XGuru2Admin != 1) {
 				$this->db->where("u.XGuru",$GLOBALS['u']['Username']);
 			}
 		}
@@ -62,7 +62,9 @@ class Ujian extends CI_Controller {
 			}
 		}
 		// print_r($data['ujian']);
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_info',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -70,14 +72,16 @@ class Ujian extends CI_Controller {
 	{
 
 		if ($GLOBALS['lvl'] != 1 ) {
-			if ($GLOBALS['cfg']->XGuru2Admin != 1) {
+			if ($this->m_config->config->XGuru2Admin != 1) {
 				$this->db->where("s.XGuru",$GLOBALS['u']['Username']);
 			}
 		}
 
 		// echo $Urut;
 		$data['title']='Tambah '.$this->judul;
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->db->select("s.*, m.XNamaMapel");
 		$this->db->from("cbt_paketsoal s");
 		$this->db->join("cbt_mapel m","m.XKodeMapel = s.XKodeMapel");
@@ -99,7 +103,9 @@ class Ujian extends CI_Controller {
 	{
 		// echo $Urut;
 		$data['title']='Edit '.$this->judul;
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		
 		$this->db->select("u.*,u.Urut as XIdUjian,s.*, m.XNamaMapel");
 		$this->db->from("cbt_ujian u");

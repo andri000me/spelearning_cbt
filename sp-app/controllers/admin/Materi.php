@@ -18,7 +18,7 @@ class Materi extends CI_Controller {
 		$data['title']='Kelola '.$this->judul;
 	
 		if ($GLOBALS['lvl'] != 1 ) {
-			if ($GLOBALS['cfg']->XGuru2Admin != 1) {
+			if ($this->m_config->config->XGuru2Admin != 1) {
 				$this->db->where("s.XGuru",$GLOBALS['u']['Username']);
 			}
 		}
@@ -27,14 +27,18 @@ class Materi extends CI_Controller {
 		$this->db->from("cbt_paketmateri s");
 		$this->db->join("cbt_mapel m","m.XKodeMapel = s.XKodeMapel");
 		$data['siswa']=$this->db->get()->result();
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_info',$data);
 		$this->load->view('admin/footer',$data);
 	}
 	public function tambah()
 	{
 		$data['title']='Tambah '.$this->judul;
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_kelola',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -49,7 +53,9 @@ class Materi extends CI_Controller {
 		$data['u']=$this->db->get()->row();
 
 		$data['title']='Edit Materi '.$this->judul;
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_tulis',$data);
 		$this->load->view('admin/footer',$data);
 	}

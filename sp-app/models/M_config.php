@@ -2,13 +2,15 @@
 
 class M_config extends CI_Model {
 	public $koneksi;
+	public $config;
+	public $cfg;
 	function __construct(){
 		parent::__construct();
 		// die();
 		if (isset($GLOBALS['db_name']) AND !empty($GLOBALS['db_name'])) {
-			$GLOBALS['sp']=$this->db->get("cbt_admin")->row_array();
-			$GLOBALS['cfg']=$this->db->get('cbt_config')->row();
-			date_default_timezone_set($GLOBALS['sp']['XTimeZone']);
+			$this->cfg=$this->db->get("cbt_admin")->row_array();
+			$this->config=$this->db->get('cbt_config')->row();
+			date_default_timezone_set($this->cfg['XTimeZone']);
 			date_default_timezone_set("Asia/Jakarta");
 			$this->koneksi=true;
 		} else {

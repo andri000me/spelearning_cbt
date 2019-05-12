@@ -4,7 +4,7 @@
 		<table>
 			<tr>
 				<td>
-					<img src="<?= base_url("asset/uploads/".$GLOBALS['sp']['XLogo']); ?>" style="max-width: 80px">
+					<img src="<?= base_url("asset/uploads/".$this->m_config->cfg['XLogo']); ?>" style="max-width: 80px">
 				</td>
 				<td>
 					<table>
@@ -26,7 +26,7 @@
 						</tr>
 						<tr>
 							<td>Satuan Pendidikan</td>
-							<td>: <?= $GLOBALS['sp']['XSekolah']; ?></td>
+							<td>: <?= $this->m_config->cfg['XSekolah']; ?></td>
 						</tr>
 					</table>
 				</td>

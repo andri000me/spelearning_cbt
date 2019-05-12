@@ -2,7 +2,7 @@
 
     // ditulis oleh  @supangat_oy
 
-if (strtotime(date("Y-m-d")) > mktime(null,null,null,3,31,2019)) {
+if (strtotime(date("Y-m-d")) > mktime(null,null,null,3,31,2020)) {
 	echo("Versi anda terlalu lama silahkan upgrade ke yang baru");
 	die();
 }

@@ -6,7 +6,7 @@
 		<table class="no-padding no-margin">
 			<tr>
 				<td style="width: 30%; vertical-align: top;">
-					<img src="<?= base_url("asset/uploads/".$GLOBALS['sp']['XLogo']); ?>" style="width: 100%">
+					<img src="<?= base_url("asset/uploads/".$this->m_config->cfg['XLogo']); ?>" style="width: 100%">
 				</td>
 				<td style="vertical-align: top;">
 					<table class="kop-table">
@@ -32,7 +32,7 @@
 						</tr>
 						<tr>
 							<td class="no-padding">Satuan Pendidikan</td>
-							<td class="no-padding">: <?= $GLOBALS['sp']['XSekolah']; ?></td>
+							<td class="no-padding">: <?= $this->m_config->cfg['XSekolah']; ?></td>
 						</tr>
 					</table>
 				</td>

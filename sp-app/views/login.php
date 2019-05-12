@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     
-    <title>Masuk Aplikasi Pembelajaran Online | <?= $GLOBALS['sp']['XSekolah']; ?></title>
+    <title>Masuk Aplikasi Pembelajaran Online | <?= $this->m_config->cfg['XSekolah']; ?></title>
 
     <!-- Favicons-->
     <link rel="icon" href="<?= base_url('sp-plugin/sp/'); ?>images/favicon/favicon-32x32.png" sizes="32x32">
@@ -61,8 +61,8 @@
         <li>
           <img src="<?= base_url("asset/bg/rect826.png"); ?>"> 
           <div class="caption left-align">
-            <h3 class="font-jos"><?= $GLOBALS['sp']['XSekolah']; ?></h3>
-            <h5 class="font-jos light grey-text text-lighten-3"><?= $GLOBALS['sp']['XAlamat']; ?></h5>
+            <h3 class="font-jos"><?= $this->m_config->cfg['XSekolah']; ?></h3>
+            <h5 class="font-jos light grey-text text-lighten-3"><?= $this->m_config->cfg['XAlamat']; ?></h5>
           </div>
         </li>
         <li>
@@ -84,7 +84,7 @@
             <div class="card "style="z-index: 2000!important">
               <div class="card-content" style="z-index: 2000!important">
                 <span class="card-title font-jos">
-                  <?= $GLOBALS['sp']['XSekolah']; ?>
+                  <?= $this->m_config->cfg['XSekolah']; ?>
                 </span>
                 <span>Masuk Halaman Siswa</span>
                 <p>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
-    <title><?= str_replace("_"," ",$title) ?> |<?= $GLOBALS['sp']['XSekolah']; ?></title>
+    <title><?= str_replace("_"," ",$title) ?> |<?= $this->m_config->cfg['XSekolah']; ?></title>
     <link rel="icon" href="<?= base_url('sp-plugin/sp/'); ?>images/favicon/favicon-32x32.png" sizes="32x32">
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="<?= base_url('sp-plugin/sp/'); ?>images/favicon/apple-touch-icon-152x152.png">
@@ -270,7 +270,7 @@
                                 ready: function () {
                                   // alert("as");
                                   $(this).jPlayer("setMedia", {
-                                    title: " <?php echo "VideoPlayer | ".$GLOBALS['sp']['XSekolah'];?>",
+                                    title: " <?php echo "VideoPlayer | ".$this->m_config->cfg['XSekolah'];?>",
                                     m4v: "<?= base_url("asset/uploads/cbt/video/".$jawaban->XVideoTanya); ?>",
                                     ogv: "<?= base_url("asset/uploads/cbt/video/".$jawaban->XVideoTanya); ?>",
                                     webmv: "<?= base_url("asset/uploads/cbt/video/".$jawaban->XVideoTanya); ?>",
@@ -419,7 +419,7 @@
                                 ready: function () {
                                   // alert("as");
                                   $(this).jPlayer("setMedia", {
-                                    title: " <?php echo "AudioPlayer | ".$GLOBALS['sp']['XSekolah'];?>",
+                                    title: " <?php echo "AudioPlayer | ".$this->m_config->cfg['XSekolah'];?>",
                                     m4a: "<?= base_url("asset/uploads/cbt/audio/".$jawaban->XAudioTanya); ?>",
                                     oga: "<?= base_url("asset/uploads/cbt/audio/".$jawaban->XAudioTanya); ?>",
                                     mp3: "<?= base_url("asset/uploads/cbt/audio/".$jawaban->XAudioTanya); ?>",

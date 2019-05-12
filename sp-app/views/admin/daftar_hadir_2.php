@@ -40,14 +40,14 @@ foreach (json_decode($info['XNamaKelas']) as $kelas) {
 		<div  class="page">
 		    <table border="0" width="100%">
 	    		<tr>
-					<td valign="top" rowspan="1" width="100" align="left"><img src="<?= base_url("asset/uploads/".$GLOBALS['sp']['XLogo']); ?>" width="100"></td>
+					<td valign="top" rowspan="1" width="100" align="left"><img src="<?= base_url("asset/uploads/".$this->m_config->cfg['XLogo']); ?>" width="100"></td>
 					<td valign="top">
 						<b>
 							<center>
 								<h2>
 								<font>DAFTAR HADIR PESERTA </font>
 							    <br><font><?= strtoupper($ujian->XNamaUjian); ?></font>
-								<br><font><?= $GLOBALS['sp']['XSekolah'] ?></font>
+								<br><font><?= $this->m_config->cfg['XSekolah'] ?></font>
 							    <br><font><b>TAHUN PELAJARAN : <?= $this->m_config->get_tahun_ajaran() ?></b></font>
 								</h2>
 							</center>

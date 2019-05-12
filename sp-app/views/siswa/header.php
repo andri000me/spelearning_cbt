@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
-    <title><?= str_replace("_"," ",$title) ?> |<?= $GLOBALS['sp']['XSekolah']; ?></title>
+    <title><?= str_replace("_"," ",$title) ?> |<?= $this->m_config->cfg['XSekolah']; ?></title>
     <!-- Favicons-->
     <link rel="icon" href="<?= base_url('sp-plugin/sp/'); ?>images/favicon/favicon-32x32.png" sizes="32x32">
     <!-- Favicons-->
@@ -149,7 +149,7 @@
                 </li>
 
                 <?php
-                if ($GLOBALS['cfg']->XElearning == 1) {
+                if ($this->m_config->config->XElearning == 1) {
                   ?>
                   <li>
                     <a href="<?= base_url('siswa/pelajaran'); ?>" class="waves-effect waves-cyan">
@@ -160,7 +160,7 @@
                   <?php
                 }
 
-                if ($GLOBALS['cfg']->XCbt == 1) {
+                if ($this->m_config->config->XCbt == 1) {
                   ?>
                   <li>
                     <a href="<?= base_url('siswa/ujian'); ?>" class="waves-effect waves-cyan">
@@ -171,7 +171,7 @@
                   <?php
                 }
 
-                if ($GLOBALS['cfg']->XNilai == 1) {
+                if ($this->m_config->config->XNilai == 1) {
                   ?>
                   <li>
                     <a href="<?= base_url('siswa/nilai'); ?>" class="waves-effect waves-cyan">

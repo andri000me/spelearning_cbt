@@ -1,5 +1,5 @@
 <?php
-if (strtotime(date("Y-m-d")) > mktime(null,null,null,3,31,2019)) {
+if (strtotime(date("Y-m-d")) > mktime(null,null,null,3,31,2020)) {
 	echo("Versi anda terlalu lama silahkan upgrade ke yang baru");
 	die();
 }
@@ -66,7 +66,7 @@ if ( ! function_exists('is_php'))
 	 */
 	function is_php($version)
 	{
-		static $_is_php;
+		static $_is_php;	
 		$version = (string) $version;
 
 		if ( ! isset($_is_php[$version]))

@@ -22,7 +22,7 @@
 <body>
 	<!-- <img src="<?= base_url('asset/img/spanel.png'); ?>" style='max-height: 70px'> -->
 	<div>
-		<h1><i><?= $GLOBALS['sp']['XSekolah']; ?></i></h1>
+		<h1><i><?= $this->m_config->cfg['XSekolah']; ?></i></h1>
 		<strong><h2>Halaman yang anda cari tidak ditemukan</h2></strong>
 		<blockquote style="border-left: 5px solid #aaa;padding: 10px">
 			Mungkin anda mengakses halaman yang tidak dibolehkan / aplikasi yang di gunakan masih berstatus trial / masa percobaan.

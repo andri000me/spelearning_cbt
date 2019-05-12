@@ -23,7 +23,9 @@ class Butir_soal extends CI_Controller {
 		$this->db->where('p.Urut',$Urut);
 		$this->db->order_by("XNomerSoal","ASC");
 		$data['soal']=$this->db->get()->result();
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_info',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -58,7 +60,9 @@ class Butir_soal extends CI_Controller {
 		$this->db->limit(1);
 		$no=$this->db->get("cbt_soal")->row();
 		$data['No']=ceil($no->XNomerSoal+1);
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_tambah',$data);
 		$this->load->view('admin/footer',$data);
 		// $this->m_config->form_edit(base_url("admin/".$this->judul."/prokopi/".$Urut),$data['soal']);
@@ -74,7 +78,9 @@ class Butir_soal extends CI_Controller {
 		$this->db->where('s.Urut',$Urut);
 		$this->db->order_by("XNomerSoal","ASC");
 		$data['soal']=$this->db->get()->row_array();
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_kelola',$data);
 		$this->load->view('admin/footer',$data);
 		// $this->m_config->form_edit(base_url("admin/".$this->judul."/prokopi/".$Urut),$data['soal']);

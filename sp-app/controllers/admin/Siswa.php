@@ -18,21 +18,27 @@ class Siswa extends CI_Controller {
 	{
 		$data['title']='Kelola '.$this->judul;
 		$data['siswa']=$this->db->get('cbt_siswa')->result();
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_info',$data);
 		$this->load->view('admin/footer',$data);
 	}
 	public function tambah()
 	{
 		$data['title']='Tambah '.$this->judul;
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_kelola',$data);
 		$this->load->view('admin/footer',$data);
 	}
 	public function upload()
 	{
 		$data['title']='Upload '.$this->judul;
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/upload__data',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -41,7 +47,9 @@ class Siswa extends CI_Controller {
 		$data['title']='Edit '.$this->judul;
 		$this->db->where("Urut",$Urut);
 		$data['u']=$this->db->get('cbt_siswa')->row();
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_kelola',$data);
 		$this->load->view('admin/footer',$data);
 		$this->m_config->form_edit(base_url("admin/".$this->judul."/proedit/".$Urut),$data['u']);
@@ -237,7 +245,7 @@ class Siswa extends CI_Controller {
 					if (!empty($data['submit']['XPilihan']) || ($data['submit']['XPilihan'] != "" )) {
 						$this->db->where_in("XKodeMapel",(array) (explode(',',$data['submit']['XPilihan'])));
 						if ($this->db->get("cbt_mapel")->num_rows() < 1) {
-							$data['pesan'].='<div class="card-panel red white-text card-panel ">Kode mapel khusus tidak bisa digunakan'.$rowData[0][2].' / tidak tersedia</div>';
+							$data['pesan'].='<div class="card-panel red white-text card-panel ">Kode mapel khusus tidak bisa digunakan  ( '.$data['submit']['XPilihan'].' ) / tidak tersedia</div>';
 						} else {
 							$data['submit']['XPilihan']=implode(',', $data['submit']['XPilihan']);
 						}
@@ -255,18 +263,19 @@ class Siswa extends CI_Controller {
 						$data['submit']['XPassword']=$this->m_token->get_pwd(5);
 					}
 
-
-				   	$this->db->where('XNomerUjian',(string) $rowData[0][0]);
-		            if ($this->db->get('cbt_siswa')->num_rows() > 0 ) {
-		            	$data['pesan'].='<div class="card-panel red white-text card-panel ">Nomer Ujian tidak bisa digunakan'.$rowData[0][2].'</div>'; 
-		            } else {
-			            if ($this->db->insert('cbt_siswa',$data['submit'])) {
-							$sukses++;			            	
+					if (!empty($rowData[0][0])  AND !empty($rowData[0][1])  AND !empty($rowData[0][2])  AND !empty($rowData[0][2])) {
+					   	$this->db->where('XNomerUjian',(string) $rowData[0][0]);
+			            if ($this->db->get('cbt_siswa')->num_rows() > 0 ) {
+			            	$data['pesan'].='<div class="card-panel red white-text card-panel ">Nomer Ujian tidak bisa digunakan  ( '.$rowData[0][0].' )</div>'; 
 			            } else {
-			            	$gagal++;
-			            	$data['pesan'].='<div class="card-panel	 red white-text card-panel ">Gagal Upload '.$rowData[0][2].'</div>'; 
+				            if ($this->db->insert('cbt_siswa',$data['submit'])) {
+								$sukses++;			            	
+				            } else {
+				            	$gagal++;
+				            	$data['pesan'].='<div class="card-panel	 red white-text card-panel ">Gagal Upload '.$rowData[0][2].'</div>'; 
+				            }
 			            }
-		            }
+					}
 
 		            
 		        }

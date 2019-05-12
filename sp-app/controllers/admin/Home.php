@@ -2,7 +2,7 @@
 
 // ditulis oleh  @supangat_oy
 
-if (strtotime(date("Y-m-d")) > mktime(null,null,null,3,31,2019)) {
+if (strtotime(date("Y-m-d")) > mktime(null,null,null,3,31,2020)) {
 	echo("Versi anda terlalu lama silahkan upgrade ke yang baru");
 	die();
 }
@@ -36,19 +36,21 @@ class Home extends CI_Controller {
 		$data['total']["siswa"]=$this->db->get("cbt_siswa")->num_rows();
 
 		if ($GLOBALS['lvl'] != 1 ) {
-			if ($GLOBALS['cfg']->XGuru2Admin != 1) {
+			if ($this->m_config->config->XGuru2Admin != 1) {
 				$this->db->where("XGuru",$GLOBALS['u']['Username']);
 			}
 		}
 		$data['total']["ujian"]=$this->db->get("cbt_ujian")->num_rows();
 
 		if ($GLOBALS['lvl'] != 1 ) {
-			if ($GLOBALS['cfg']->XGuru2Admin != 1) {
+			if ($this->m_config->config->XGuru2Admin != 1) {
 				$this->db->where("XGuru",$GLOBALS['u']['Username']);
 			}
 		}
 		$data['total']["pelajaran"]=$this->db->get("cbt_pelajaran")->num_rows();
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 
 		if ($GLOBALS['u']['login'] != 1) {
 			if (empty($GLOBALS['u']['XKelas']) || $GLOBALS['u']['XKelas'] == 'null' || $GLOBALS['u']['XKelas'] == '') {

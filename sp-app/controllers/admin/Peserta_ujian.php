@@ -19,7 +19,7 @@ class Peserta_ujian extends CI_Controller {
 		$data['title']='Kelola '.$this->judul;
 
 		if ($GLOBALS['lvl'] != 1 ) {
-			if ($GLOBALS['cfg']->XGuru2Admin != 1) {
+			if ($this->m_config->config->XGuru2Admin != 1) {
 				$this->db->where("u.XGuru",$GLOBALS['u']['Username']);
 			}
 		}
@@ -59,7 +59,9 @@ class Peserta_ujian extends CI_Controller {
 			}
 		}
 		// print_r($data['ujian']);
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_info',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -85,7 +87,9 @@ class Peserta_ujian extends CI_Controller {
 		$this->db->group_by('XRuang');
 		$this->db->order_by('XRuang');
 		$data['ruang']=$this->db->get("cbt_siswa");
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_ruang',$data);
 		$this->load->view('admin/footer',$data);
 	}

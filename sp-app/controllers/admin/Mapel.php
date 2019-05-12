@@ -18,21 +18,27 @@ class Mapel extends CI_Controller {
 	{
 		$data['title']='Kelola '.$this->judul;
 		$data['mapel']=$this->db->get('cbt_mapel')->result();
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_info',$data);
 		$this->load->view('admin/footer',$data);
 	}
 	public function tambah()
 	{
 		$data['title']='Tambah '.$this->judul;
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_kelola',$data);
 		$this->load->view('admin/footer',$data);
 	}
 	public function upload()
 	{
 		$data['title']='Upload '.$this->judul;
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/upload__data',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -41,7 +47,9 @@ class Mapel extends CI_Controller {
 		$data['title']='Edit '.$this->judul;
 		$this->db->where("Urut",$Urut);
 		$data['u']=$this->db->get('cbt_mapel')->row();
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_kelola',$data);
 		$this->load->view('admin/footer',$data);
 		$this->m_config->form_edit(base_url("admin/".$this->judul."/proedit/".$Urut),$data['u']);

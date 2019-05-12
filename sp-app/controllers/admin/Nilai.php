@@ -16,7 +16,7 @@ class Nilai extends CI_Controller {
 		$data['title']="Nilai Ujian";
 
 		if ($GLOBALS['lvl'] != 1 ) {
-			if ($GLOBALS['cfg']->XGuru2Admin != 1) {
+			if ($this->m_config->config->XGuru2Admin != 1) {
 				$this->db->where("u.XGuru",$GLOBALS['u']['Username']);
 			}
 		}
@@ -56,7 +56,9 @@ class Nilai extends CI_Controller {
 			}
 		}
 
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/nilai_ujian_info',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -127,7 +129,7 @@ class Nilai extends CI_Controller {
         $kl->setTitle("Welcome");
         $kl->getProtection()->setSheet(true);
         $kl->setCellValueExplicit("C5","DATA NILAI ".strtoupper($ujian->XNamaMapel));
-        $kl->setCellValueExplicit("C6", strtoupper($GLOBALS['sp']['XSekolah']));
+        $kl->setCellValueExplicit("C6", strtoupper($this->m_config->cfg['XSekolah']));
         $kl->setCellValueExplicit("C8", "Kelas | Rombel : ".$ujian->XKodeKelas." | ".$ujian->XKodeJurusan);
         $kl->setCellValueExplicit("C9", "Tanggal Ujian : ".date("d M Y",strtotime($ujian->XTglUjian)));
         $kl->setCellValueExplicit("C10", "Tanggal Unduh : ".date("d M Y"));
@@ -301,10 +303,10 @@ class Nilai extends CI_Controller {
         $objPHPExcel->setActiveSheetIndex(0);
         $objPHPExcel->getProperties()->setCreator("Supangat Oy")
             ->setLastModifiedBy("Supangat Oy")
-            ->setTitle("Data PDD ".$GLOBALS['sp']['XSekolah'])
+            ->setTitle("Data PDD ".$this->m_config->cfg['XSekolah'])
             ->setSubject("Export PHPExcel Test Document")
-            ->setDescription("Data PDD ".$GLOBALS['sp']['XSekolah'])
-            ->setKeywords("Data PDD ".$GLOBALS['sp']['XSekolah'])
+            ->setDescription("Data PDD ".$this->m_config->cfg['XSekolah'])
+            ->setKeywords("Data PDD ".$this->m_config->cfg['XSekolah'])
             ->setCategory("PHPExcel");
         
         $objWriter  = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');

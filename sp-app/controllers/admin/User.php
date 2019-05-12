@@ -16,7 +16,9 @@ class User extends CI_Controller {
 	{
 		$data['title']="Profil Anda";
 		$data['u']=(object) $GLOBALS['u'];
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/user_edit',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -27,7 +29,9 @@ class User extends CI_Controller {
 		$this->db->where("Username",$Uname);
 		$data['u']=$this->db->get("cbt_user")->row();
 		$data['title']="Profil ".$data['u']->Nama;
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/user_info',$data);
 		$this->load->view('admin/footer',$data);
 	}

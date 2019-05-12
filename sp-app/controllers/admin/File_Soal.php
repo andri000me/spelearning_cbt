@@ -23,7 +23,9 @@ class File_Soal extends CI_Controller {
 		$this->db->where('p.Urut',$Urut);
 		$this->db->order_by("XNomerSoal","ASC");
 		$data['soal']=$this->db->get()->result();
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_info',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -57,7 +59,9 @@ class File_Soal extends CI_Controller {
 	public function upload()
 	{
 		$data['title']='Upload '.$this->judul;
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/upload__file',$data);
 		$this->load->view('admin/footer',$data);
 	}

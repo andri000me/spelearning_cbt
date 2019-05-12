@@ -16,14 +16,18 @@ class Users extends CI_Controller {
 		$data['title']='Kelola Admin/Guru';
 		$this->db->where('Urut != 1');
 		$data['guru']=$this->db->get('cbt_user')->result();
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/users_info',$data);
 		$this->load->view('admin/footer',$data);
 	}
 	public function tambah()
 	{
 		$data['title']='Tambah Admin/Guru';
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/users_tambah',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -32,7 +36,9 @@ class Users extends CI_Controller {
 		$data['title']='Edit Admin/Guru';
 		$this->db->where("Urut",$Urut);
 		$data['u']=$this->db->get('cbt_user')->row();
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/users_edit',$data);
 		$this->load->view('admin/footer',$data);
 	}

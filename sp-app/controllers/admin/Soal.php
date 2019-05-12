@@ -18,7 +18,7 @@ class Soal extends CI_Controller {
 		$data['title']='Kelola '.$this->judul;
 	
 		if ($GLOBALS['lvl'] != 1 ) {
-			if ($GLOBALS['cfg']->XGuru2Admin != 1) {
+			if ($this->m_config->config->XGuru2Admin != 1) {
 				$this->db->where("s.XGuru",$GLOBALS['u']['Username']);
 			}
 		}
@@ -27,14 +27,18 @@ class Soal extends CI_Controller {
 		$this->db->from("cbt_paketsoal s");
 		$this->db->join("cbt_mapel m","m.XKodeMapel = s.XKodeMapel");
 		$data['siswa']=$this->db->get()->result();
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_info',$data);
 		$this->load->view('admin/footer',$data);
 	}
 	public function tambah()
 	{
 		$data['title']='Tambah '.$this->judul;
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_kelola',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -42,7 +46,9 @@ class Soal extends CI_Controller {
 	{
 		$data['title']='Upload Butir'.$this->judul;
 		$data['Urut']=$Urut;
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/upload__data',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -56,7 +62,9 @@ class Soal extends CI_Controller {
 		$this->db->where("s.Urut",$Urut);
 		$data['u']=$this->db->get()->row();
 		print_r($data);
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/'.$this->judul.'_kelola',$data);
 		$this->load->view('admin/footer',$data);
 		$this->m_config->form_edit(base_url("admin/".$this->judul."/prokopi/".$Urut),$data['u']);

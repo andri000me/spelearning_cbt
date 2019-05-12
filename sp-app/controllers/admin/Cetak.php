@@ -16,20 +16,26 @@ class Cetak extends CI_Controller {
 
 	function daftar_hadir(){
 		$data['title']=$this->judul.' Daftar Hadir';
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/daftar_hadir_1',$data);
 		$this->load->view('admin/footer',$data);
 	}
 	function daftar_hadir_pela(){
 		$data['title']=$this->judul.' Daftar Hadir';
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/daftar_hadir_pela_1',$data);
 		$this->load->view('admin/footer',$data);
 	}
 	public function kartu()
 	{
 		$data['title']=$this->judul.' Kartu';
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/kartu_1',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -37,7 +43,9 @@ class Cetak extends CI_Controller {
 	public function beritacara()
 	{
 		$data['title']=$this->judul.' Berita Acara';
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/beritacara_1',$data);
 		$this->load->view('admin/footer',$data);
 	}

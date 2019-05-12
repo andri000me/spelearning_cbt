@@ -15,8 +15,10 @@ class Sekolah extends CI_Controller {
 	public function index()
 	{
 		$data['title']='Identitas Sekolah';
-		$data['s']=(object) $GLOBALS['sp'];
+		$data['s']=(object) $this->m_config->cfg;
+		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
+		
 		$this->load->view('admin/sekolah_info',$data);
 		$this->load->view('admin/footer',$data);
 	}

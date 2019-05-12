@@ -13,8 +13,8 @@
 			      			<input type="text" name="XNamaKelas" required="required" maxlength="100" placeholder="contoh : X-TKJ-A,7A"><label>Nama Kelas</label>
 			      		</div>	
 			      		<?php
-			      		// echo $GLOBALS['sp']['XTingkat'];
-			      		if ($GLOBALS['sp']['XTingkat'] == "SMK/SMA/MA") {
+			      		// echo $this->m_config->cfg['XTingkat'];
+			      		if ($this->m_config->cfg['XTingkat'] == "SMK/SMA/MA") {
 			      			?>
 				      		<div class="input-field">
 				      			<input type="text" name="XKodeJurusan" required="required" maxlength="100" placeholder="contoh : TKJ"><label>Kode Jurusan</label>
