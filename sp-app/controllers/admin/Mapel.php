@@ -137,15 +137,20 @@ class Mapel extends CI_Controller {
 		            	"XKKM" => (int) $rowData[0][2],
 		            	"XMapelAgama" =>$rowData[0][3],
 		            ];
-		            $this->db->where('XKodeMapel',$rowData[0][0]);
-		            if ($this->db->get('cbt_mapel')->num_rows() > 0 ) {
-		            	$data['pesan'].='<div class="card-panel red white-text">Kode Mapel tidka bisa digunakan'.$rowData[0][2].'</div>'; 
-		            } else {
-			            if ($this->db->insert('cbt_mapel',$data['submit'])) {
-							$sukses++;			            	
+		            if (!empty($data['submit']['XKodeMapel']) AND !empty($data['submit']['XNamaMapel']) AND  !empty($data['submit']['XKKM']) AND !empty($data['submit']['XMapelAgama'])) {
+
+			            $this->db->where('XKodeMapel',$rowData[0][0]);
+			            if ($this->db->get('cbt_mapel')->num_rows() > 0 ) {
+			            	$data['pesan'].='<div class="card-panel red white-text">Kode Mapel tidka bisa digunakan ( '.$rowData[0][0].' )</div>'; 
 			            } else {
-			            	$data['pesan'].='<div class="card-panel	 red white-text">Gagal Upload '.$rowData[0][2].'</div>'; 
+				            if ($this->db->insert('cbt_mapel',$data['submit'])) {
+								$sukses++;			            	
+				            } else {
+				            	$data['pesan'].='<div class="card-panel	 red white-text">Gagal Upload '.$rowData[0][2].'</div>'; 
+				            }
 			            }
+
+
 		            }
 
 		            
