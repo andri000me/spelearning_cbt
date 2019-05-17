@@ -18,7 +18,7 @@ class Api extends CI_Controller {
 			} else {
 				$res['status']=true;
 				// get data
-				$table=['mapel','kelas','siswa','paketsoal','ujian','siswa_ujian','paketmateri','pelajaran','siswa_pelajaran'];
+				$table=['mapel','kelas','user','siswa','paketsoal','ujian','siswa_ujian','paketmateri','pelajaran','siswa_pelajaran'];
 
 				foreach ($table as $key => $v) {
 					$res['data'][$v]=$this->db->get("cbt_".$v)->result();
