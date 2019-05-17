@@ -3,11 +3,13 @@
 	<div class="card-content">
 		<div class="card-title">
 			Daftar Kelas
+			<?php if ($this->m_config->cfg['XServer']) { ?>
 			<div class="input-field">
 				<!-- <a href="<?= base_url("admin/kelas/tambah"); ?>" class="modal-trigger btn cyan white-text"><i class="material-icons left">cloud_download</i> Download Data</a>	 -->
 				<a href="<?= base_url("admin/kelas/upload"); ?>" class="modal-trigger btn blue white-text">Upload Data<i class="material-icons left">cloud_upload</i></a>	
 				<a href="<?= base_url("admin/kelas/tambah"); ?>" class="modal-trigger btn green white-text"><i class="material-icons left">add</i> Tambah Kelas</a>	
 			</div>
+			<?php } ?>
 		</div>
 		<table class="striped">
 			<thead>
@@ -29,13 +31,15 @@
 					<td><?= $g->XKodeKelas; ?></td>
 					<td><?= $g->XKodeJurusan; ?></td>
 					<td><?= $g->XNamaKelas; ?></td>
-					<td>
+ 					<td>
+ 						<?php if ($this->m_config->cfg['XServer']) { ?>
 						<a data-target="modal1" class="btn green white-text " href="<?= base_url("admin/kelas/edit/".$g->Urut); ?>" >
-							<i class="material-icons">mode_edit</i>
+ 							<i class="material-icons">mode_edit</i>
 						</a>
 						<a onclick="return confirm('Apakah benar akan menghapus data ini ?')" href="<?= base_url("admin/kelas/proha/".$g->Urut); ?>" class="btn red white-text">
 							<i class="material-icons">delete_forever</i>
 						</a>
+						<?php } ?>
 					</td>
 				</tr>
 			<?php } ?>

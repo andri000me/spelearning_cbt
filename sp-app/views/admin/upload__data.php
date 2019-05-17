@@ -22,10 +22,10 @@
 						<div class="file-field input-field">
 							<div class="btn blue btn-small">
 								<span>File Excel</span>
-								<input type="file" name="file" required="required">
+								<input  autocomplete="off" type="file" name="file" required="required">
 							</div>
 							<div class="file-path-wrapper">
-						        <input class="file-path validate" type="text">
+						        <input  autocomplete="off" class="file-path validate" type="text">
 						      </div>
 						</div>
 						<div>

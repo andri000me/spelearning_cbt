@@ -21,7 +21,7 @@
 								?>
 								<li class="collection-item">
 									<label>
-										<input type="checkbox" name="kelas[]" value="<?= $kk->XNamaKelas; ?>">
+										<input  autocomplete="off" type="checkbox" name="kelas[]" value="<?= $kk->XNamaKelas; ?>">
 										<span>
 											<?= $kk->XNamaKelas; ?>
 										</span>

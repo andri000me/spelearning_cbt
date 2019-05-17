@@ -3,12 +3,14 @@
 	<div class="card-content">
 		<div class="card-title">
 			Daftar Siswa
+			<?php if ($this->m_config->cfg['XServer']) { ?>
 			<div class="input-field">
 				<!-- <a href="<?= base_url("admin/siswa/tambah"); ?>" class="modal-trigger btn cyan white-text"><i class="material-icons left">cloud_download</i> Download Data</a>	 -->
 				<a href="<?= base_url("admin/siswa/upload"); ?>" class="modal-trigger btn blue white-text">Upload Data<i class="material-icons left">cloud_upload</i></a>	
 				<a href="<?= base_url("admin/siswa/tambah"); ?>" class="modal-trigger btn green white-text"><i class="material-icons left">add</i> Tambah Siswa</a>	
 				<button class="btn red" type="button" onclick="submit_siswa_all()"><i class="material-icons left">delete</i> <span>Hapus siswa Seleksi</span></button>
 			</div>
+			<?php } ?>
 		</div>
 		<form action="<?= base_url("admin/siswa/hapus_seleksi"); ?>" method="post">
 		<table>
@@ -16,7 +18,7 @@
 				<tr>
 					<th>
 						<label>
-							<input type="checkbox" name="" onclick="return siswa_all()">
+							<input  autocomplete="off" type="checkbox" name="" onclick="return siswa_all()">
 							<span></span>
 						</label>
 					</th>
@@ -38,7 +40,7 @@
 						<tr>
 							<td>
 								<label>
-									<input type="checkbox" name="siswa[]" value="<?= $g->Urut; ?>">
+									<input  autocomplete="off" type="checkbox" name="siswa[]" value="<?= $g->Urut; ?>">
 									<span></span>
 								</label>
 							</td>
@@ -58,12 +60,14 @@
 							<td><?= $g->XNamaKelas; ?></td>
 							<td><?= $g->XPilihan; ?></td>
 							<td nowrap="nowrap">
+								<?php if ($this->m_config->cfg['XServer']) { ?>
 								<a data-target="modal1" class="btn green white-text " href="<?= base_url("admin/siswa/edit/".$g->Urut); ?>" >
 									<i class="material-icons">mode_edit</i>
 								</a>	
 								<a onclick="return confirm('Apakah benar akan menghapus data ini ?')" href="<?= base_url("admin/siswa/proha/".$g->Urut); ?>" class="btn red white-text">
 									<i class="material-icons">delete_forever</i>
 								</a>
+								<?php } ?>
 							</td>
 						</tr>
 					<?php } ?>

@@ -89,11 +89,11 @@
                 <span>Masuk Halaman Siswa</span>
                 <p>
                   <div class="input-field">
-                    <input type="text" name="XNomerUjian" required="required">
+                    <input  autocomplete="off" type="text" name="XNomerUjian" required="required">
                     <label>Nomer Ujian</label>
                   </div>
                   <div class="input-field">
-                    <input type="password" name="XPassword" required="required">
+                    <input  autocomplete="off" type="password" name="XPassword" required="required">
                     <label>Password</label>
                   </div>
                   <?= $this->m_config->pesan(); ?>

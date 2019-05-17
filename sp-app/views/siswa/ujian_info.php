@@ -59,8 +59,8 @@
               <div class="card">
                 <div class="card-content <?= $u->XDisplay; ?>">
                   <b>Mata Palajaran</b><br><i> : <?= $u->XNamaMapel; ?></i><br>
-                  <b>Ujian Dimulai</b><br><i> : <?= date("d M. Y H:i A",$buka); ?></i><br>
-                  <b>Ujian Selesai</b><br><i> : <?= date("d M. Y H:i A",$tutup); ?></i><br>
+                  <b>Ujian Dimulai</b><br><i> : <?= tgl_bilang($buka,1,1); ?></i><br>
+                  <b>Ujian Selesai</b><br><i> : <?= tgl_bilang($tutup,1,1); ?></i><br>
                   <b>Durasi Ujian</b><br><i> : <?= $u->XLamaUjian; ?> Menit</i><br>
                 </div>
                 <?php

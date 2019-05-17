@@ -10,13 +10,13 @@
 						<div class="row">
 							<div class="col s12 m4">
 								<div class="input-field">
-									<input readonly="readonly" type="text" name="XKodeSoal" value="<?= $u->XKodeSoal; ?>">
+									<input  autocomplete="off" readonly="readonly" type="text" name="XKodeSoal" value="<?= $u->XKodeSoal; ?>">
 									<label>Kode Bank Soal</label>
 								</div>
 							</div>
 							<div class="col s12 m4">
 								<div class="input-field">
-									<input readonly="readonly" type="text" name="" value="<?= $u->XNamaMapel; ?>">
+									<input  autocomplete="off" readonly="readonly" type="text" name="" value="<?= $u->XNamaMapel; ?>">
 									<label>Mapel</label>
 								</div>
 							</div>
@@ -59,15 +59,15 @@
 									<label>Sesi Ujian</label>
 								</div>
 								<div class="input-field">
-									<input type="text" name="XTglUjian" class="datetimepicker" required="required">
+									<input  autocomplete="off" type="text" name="XTglUjian" class="datetimepicker" required="required" value="<?= date("Y/m/d H:i"); ?>">
 									<label> Waktu Mulai Ujian</label>
 								</div>
 								<div class="input-field">
-									<input type="text" class="datetimepicker" name="XBatasMasuk" required="required">
+									<input  autocomplete="off" type="text" class="datetimepicker" name="XBatasMasuk" required="required">
 									<label> Waktu Selesai Ujian</label>
 								</div>
 								<div class="input-field">
-									<input type="number" min="0" max="10000" name="XLamaUjian" required="required">
+									<input  autocomplete="off" type="number" min="0" max="10000" name="XLamaUjian" required="required">
 									<label>Durasi Tes (Menit)</label>
 								</div>
 							</div>
@@ -80,7 +80,7 @@
 									<label>Soal PDF <span  class="red-text">(*)</span></label>
 								</div>
 								<div class="input-field" style="display: none;" id="XFilePdf">
-									<input type="text" name="XFilePdf">
+									<input  autocomplete="off" type="text" name="XFilePdf">
 									<label>Nama File PDF</label>
 								</div>
 								<div class="input-field">
@@ -107,7 +107,7 @@
 								</div>
 								<fieldset>
 									<legend>Token Ujian</legend>
-									<input style="color: red;font-size: 25px;text-align: center;" type="text" name="XTokenUjian" readonly="readonly" required="required" value="<?= $this->m_config->get_token(); ?>">
+									<input  autocomplete="off" style="color: red;font-size: 25px;text-align: center;" type="text" name="XTokenUjian" readonly="readonly" required="required" value="<?= $this->m_config->get_token(); ?>">
 								</fieldset>
 								<small class="red-text">(*) Jangan Rilis token kembali jika saat mengedit ujian</small>
 							</div>

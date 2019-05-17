@@ -14,10 +14,12 @@
 	<div class="card-content">
 		<div class="card-title">
 			Daftar Ujian
+			<?php if ($this->m_config->cfg['XServer']) { ?>
 			<div class="pull right">
 				<!-- <a href="<?= base_url("admin/ujian/tambah"); ?>" class="modal-trigger btn cyan white-text"><i class="material-icons left">cloud_download</i> Download Data</a>	 -->
 				<a href="<?= base_url("admin/ujian/tambah"); ?>" class="modal-trigger btn green white-text"><i class="material-icons left">add</i> Tambah Ujian</a>	
 			</div>
+			<?php } ?>
 		</div>
 		<table class="striped">
 			<thead>
@@ -31,7 +33,10 @@
 					<th>Tgl Selesai</th>
 					<th>Durasi</th>
 					<th>Token</th>
+			
+					<?php if ($this->m_config->cfg['XServer']) { ?>
 					<th nowrap="nowrap">Aksi</th>
+					<?php } ?>
 				</tr>
 			</thead>
 			<?php
@@ -57,11 +62,14 @@
 					<td nowrap="nowrap"><?= $g->XBatasMasuk; ?></td>
 					<td><?= $g->XLamaUjian; ?> Menit</td>
 					<td><span class="red-text"><?= $g->XTokenUjian ;?></span></td>
+			 
+			 		<?php if ($this->m_config->cfg['XServer']) { ?>
 					<td nowrap="nowrap">
 						<a  href="<?= base_url("admin/ujian/edit/".$g->XIdUjian); ?>" class="btn btn-small blue" ><i class="material-icons left">timer</i> Set</a>
 						<a <?= $g->XDisplay; ?> onclick="return confirm('Apakah anda yakin ingin mengakhiri sesi ujian ini ??');" href="<?= base_url("admin/ujian/prosesai/".$g->XIdUjian); ?>"  class="btn btn-small green"><i class="material-icons left">done_all</i> Selesai</a>
 						<a onclick="return confirm('Apakah anda yakin ingin mnghapus sesi ujian ini ??');" href="<?= base_url("admin/ujian/hapus/".$g->XIdUjian); ?>"  class="btn btn-small red"><i class="material-icons left">delete</i> Hapus</a>
 					</td>
+					<?php } ?>
 				</tr>
 			<?php } ?>
 		</table>

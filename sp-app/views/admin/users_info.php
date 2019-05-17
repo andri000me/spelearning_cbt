@@ -3,9 +3,11 @@
 	<div class="card-content">
 		<div class="card-title">
 			Daftar Admin/Guru
+			<?php if ($this->m_config->cfg['XServer']) { ?>
 			<div class="pull right">
 				<a href="<?= base_url("admin/users/tambah"); ?>" class="modal-trigger btn green white-text">Tambah Guru/Admin</a>	
 			</div>
+			<?php } ?>
 		</div>
 		<table>
 			<thead>
@@ -52,12 +54,14 @@
 						} ?>
 					</td>
 					<td>
+						<?php if ($this->m_config->cfg['XServer']) { ?>
 						<a data-target="modal1" class="btn green white-text " href="<?= base_url("admin/users/edit/".$g->Urut); ?>" >
 							<i class="material-icons">mode_edit</i>
 						</a>
 						<a onclick="return confirm('Apakah benar akan menghapus data ini ?')" href="<?= base_url("admin/users/proha/".$g->Urut); ?>" class="btn red white-text">
 							<i class="material-icons">delete_forever</i>
 						</a>
+						<?php } ?>
 					</td>
 				</tr>
 			<?php } ?>

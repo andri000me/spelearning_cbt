@@ -33,8 +33,8 @@ foreach ($Pelajaran->result() as $u) {
 						?>
 										
 					</ol></i></li>
-					<li class="collection-item"><b>Tanggal & Waktu Mulai Pelajaran</b><br/><i> : <?= date("d M. Y H:i",strtotime($u->XWaktuMulai)); ?></i></li>
-					<li class="collection-item"><b>Tanggal & Waktu Selesai Pelajaran</b><br/><i> : <?= date("d M. Y H:i",strtotime($u->XWaktuAkhir)); ?></i></li>
+					<li class="collection-item"><b>Tanggal & Waktu Mulai Pelajaran</b><br/><i> : <?= tgl_bilang(strtotime($u->XWaktuMulai),1,1); ?></i></li>
+					<li class="collection-item"><b>Tanggal & Waktu Selesai Pelajaran</b><br/><i> : <?= tgl_bilang(strtotime($u->XWaktuAkhir),1,1) ?></i></li>
 					<li class="collection-item"><b>Bolehkan Bertanya </b><br/><i> : <?php
 					if ($u->XTanya==0) {
 					 	echo("Tidak diperbolehkan");
@@ -63,7 +63,7 @@ foreach ($Pelajaran->result() as $u) {
 
 			<form action="<?= base_url("siswa/Pelajaran/cek/".$u->XIdPelajaran); ?>" method="post">
 					<div class="input-field">
-						<input type="text" name="XTokenPelajaran" required="required" maxlength="5">
+						<input  autocomplete="off" type="text" name="XTokenPelajaran" required="required" maxlength="5">
 						<label>Masukan Token Pelajaran</label>
 					</div>
 					<?= $this->m_config->pesan(); ?>

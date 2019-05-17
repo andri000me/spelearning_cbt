@@ -10,13 +10,13 @@
 			</div>
 			<div class="col m5">
 				<div class="input-field">
-					<input type="text" name="" value="<?= $soal['XKodeSoal']; ?>" readonly='readonly'>
+					<input  autocomplete="off" type="text" name="" value="<?= $soal['XKodeSoal']; ?>" readonly='readonly'>
 					<label>Kode Soal</label>
 				</div>
 			</div>
 			<div class="col m5">
 				<div class="input-field">
-					<input type="text" name="" value="<?= $soal['XNamaMapel']; ?>" readonly='readonly'>
+					<input  autocomplete="off" type="text" name="" value="<?= $soal['XNamaMapel']; ?>" readonly='readonly'>
 					<label>Mapel</label>
 				</div>
 			</div>
@@ -36,10 +36,10 @@
 				<div class="file-field input-field">
 			      <div class="btn">
 			        <span><i class="material-icons">image</i></span>
-			        <input type="file" name="XGambarTanya">
+			        <input  autocomplete="off" type="file" name="XGambarTanya">
 			      </div>
 			      <div class="file-path-wrapper">
-			        <input class="file-path validate" type="text">
+			        <input  autocomplete="off" class="file-path validate" type="text">
 			      </div>
 			    </div>
 			</div>
@@ -52,10 +52,10 @@
 				<div class="file-field input-field">
 			      <div class="btn">
 			        <span><i class="material-icons">movie</i></span>
-			        <input type="file" name="XVideoTanya">
+			        <input  autocomplete="off" type="file" name="XVideoTanya">
 			      </div>
 			      <div class="file-path-wrapper">
-			        <input class="file-path validate" type="text">
+			        <input  autocomplete="off" class="file-path validate" type="text">
 			      </div>
 			    </div>
 			</div>
@@ -68,10 +68,10 @@
 				<div class="file-field input-field">
 			      <div class="btn">
 			        <span><i class="material-icons">audiotrack</i></span>
-			        <input type="file" name="XAudioTanya">
+			        <input  autocomplete="off" type="file" name="XAudioTanya">
 			      </div>
 			      <div class="file-path-wrapper">
-			        <input class="file-path validate" type="text">
+			        <input  autocomplete="off" class="file-path validate" type="text">
 			      </div>
 			    </div>
 			</div>
@@ -92,7 +92,7 @@
 				<div class="col m3">
 					<div class="">
 						<label>
-							<input type="radio" required="required" name="XKunciJawaban" value="<?= $i ;?>"  class="with-gap">
+							<input  autocomplete="off" type="radio" required="required" name="XKunciJawaban" value="<?= $i ;?>"  class="with-gap">
 							<span>Kunci Jawaban</span>
 						</label>
 					</div>
@@ -105,10 +105,10 @@
 					<div class="file-field input-field">
 				      <div class="btn">
 				        <span><i class="material-icons">image</i></span>
-				        <input type="file" name="XGambarJawab<?= $i; ?>">
+				        <input  autocomplete="off" type="file" name="XGambarJawab<?= $i; ?>">
 				      </div>
 				      <div class="file-path-wrapper">
-				        <input class="file-path validate" type="text">
+				        <input  autocomplete="off" class="file-path validate" type="text">
 				      </div>
 				    </div>		
 				</div>

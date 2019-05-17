@@ -6,23 +6,23 @@
 
 					<form method="post" action="<?= base_url("admin/kelas/protam"); ?>">
 			      		<div class="input-field">
-			      			<input type="text" name="XKodeKelas" required="required" maxlength="100" placeholder="contoh : X,XI,XII"> 
+			      			<input  autocomplete="off" type="text" name="XKodeKelas" required="required" maxlength="100" placeholder="contoh : X,XI,XII"> 
 			      			<label>Kode Kelas</label>
 			      		</div>	
 			      		<div class="input-field">
-			      			<input type="text" name="XNamaKelas" required="required" maxlength="100" placeholder="contoh : X-TKJ-A,7A"><label>Nama Kelas</label>
+			      			<input  autocomplete="off" type="text" name="XNamaKelas" required="required" maxlength="100" placeholder="contoh : X-TKJ-A,7A"><label>Nama Kelas</label>
 			      		</div>	
 			      		<?php
 			      		// echo $this->m_config->cfg['XTingkat'];
 			      		if ($this->m_config->cfg['XTingkat'] == "SMK/SMA/MA") {
 			      			?>
 				      		<div class="input-field">
-				      			<input type="text" name="XKodeJurusan" required="required" maxlength="100" placeholder="contoh : TKJ"><label>Kode Jurusan</label>
+				      			<input  autocomplete="off" type="text" name="XKodeJurusan" required="required" maxlength="100" placeholder="contoh : TKJ"><label>Kode Jurusan</label>
 				      		</div>	
 			      			<?php
 			      		} else {
 							?>
-			      			<input type="hidden" name="XKodeJurusan" required="required" maxlength="100" value="tidak">
+			      			<input  autocomplete="off" type="hidden" name="XKodeJurusan" required="required" maxlength="100" value="tidak">
 							<?php			      			
 			      		}
 			      		?>

@@ -12,10 +12,10 @@
 						<div class="file-field input-field">
 					      <div class="btn">
 					        <span>Logo Sekolah</span>
-					        <input type="file" name="file" data-target='#form-logo'>
+					        <input  autocomplete="off" type="file" name="file" data-target='#form-logo'>
 					      </div>
 					      <div class="file-path-wrapper">
-					        <input class="file-path validate" type="text">
+					        <input  autocomplete="off" class="file-path validate" type="text">
 					      </div>
 					      <!-- <div class="center-align"> -->
 					      	<small class="red-text">(*) Max 700x700px</small>
@@ -36,11 +36,11 @@
 					<!-- <?= print_r($s); ?> -->
 					<form action="<?= base_url('admin/sekolah/proup'); ?>" method="post">
 						<div class="input-field">
-							<input type="text" name="XKodeSekolah" required="required" maxlength="100" value="<?= $s->XKodeSekolah; ?>">
+							<input  autocomplete="off" type="text" name="XKodeSekolah" required="required" maxlength="100" value="<?= $s->XKodeSekolah; ?>">
 							<label>Kode Sekolah</label>
 						</div>
 						<div class="input-field">
-							<input type="text" name="XSekolah" required="required" maxlength="100" value="<?= $s->XSekolah; ?>">
+							<input  autocomplete="off" type="text" name="XSekolah" required="required" maxlength="100" value="<?= $s->XSekolah; ?>">
 							<label>Nama Sekolah</label>
 						</div>
 						<div class="input-field">
@@ -53,47 +53,47 @@
 							<label>Tingkatan Sekolah</label>
 						</div>
 						<div class="input-field">
-							<input type="text" name="XAlamat" required="required" maxlength="100" value="<?= $s->XAlamat; ?>">
+							<input  autocomplete="off" type="text" name="XAlamat" required="required" maxlength="100" value="<?= $s->XAlamat; ?>">
 							<label>Alamat Sekolah</label>
 						</div>
 						<div class="row">
 							<div class="col s12 m5">
 								<div class="input-field">
-									<input type="text" name="XProp" required="required" maxlength="100" value="<?= $s->XProp; ?>">
+									<input  autocomplete="off" type="text" name="XProp" required="required" maxlength="100" value="<?= $s->XProp; ?>">
 									<label>Provinsi</label>
 								</div>
 							</div>
 							<div class="col s12 m5">
 								<div class="input-field">
-									<input type="text" name="XKab" required="required" maxlength="100" value="<?= $s->XKab; ?>">
+									<input  autocomplete="off" type="text" name="XKab" required="required" maxlength="100" value="<?= $s->XKab; ?>">
 									<label>Kabupaten</label>
 								</div>
 							</div>
 							<div class="col s12 m5">
 								<div class="input-field">
-									<input type="text" name="XKec" required="required" maxlength="100" value="<?= $s->XKec; ?>">
+									<input  autocomplete="off" type="text" name="XKec" required="required" maxlength="100" value="<?= $s->XKec; ?>">
 									<label>Kecamatan</label>
 								</div>
 							</div>
 						</div>
 						<div class="input-field">
-							<input type="text" name="XTelp" required="required" maxlength="100" value="<?= $s->XTelp; ?>">
+							<input  autocomplete="off" type="text" name="XTelp" required="required" maxlength="100" value="<?= $s->XTelp; ?>">
 							<label>No. Telp</label>
 						</div>
 						<div class="input-field">
-							<input type="text" name="XFax" required="required" maxlength="100" value="<?= $s->XFax; ?>">
+							<input  autocomplete="off" type="text" name="XFax" required="required" maxlength="100" value="<?= $s->XFax; ?>">
 							<label>No. Fax</label>
 						</div>
 						<div class="input-field">
-							<input type="text" name="XEmail" required="required" maxlength="100" value="<?= $s->XEmail; ?>">
+							<input  autocomplete="off" type="text" name="XEmail" required="required" maxlength="100" value="<?= $s->XEmail; ?>">
 							<label>Email Sekolah</label>
 						</div>
 						<div class="input-field">
-							<input type="text" name="XKepSek" required="required" maxlength="100" value="<?= $s->XKepSek; ?>">
+							<input  autocomplete="off" type="text" name="XKepSek" required="required" maxlength="100" value="<?= $s->XKepSek; ?>">
 							<label>Kepala Sekolah</label>
 						</div>
 						<div class="input-field">
-							<input type="text" name="XNIPKepsek" required="required" maxlength="100" value="<?= $s->XNIPKepsek; ?>">
+							<input  autocomplete="off" type="text" name="XNIPKepsek" required="required" maxlength="100" value="<?= $s->XNIPKepsek; ?>">
 							<label>NIP. Kepala Sekolah</label>
 						</div>
 						<div class="input-field">

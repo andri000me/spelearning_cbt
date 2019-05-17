@@ -50,24 +50,24 @@
             <form action="<?= base_url('install/proses/1'); ?>" method="post">
               <div class="form-group">
                 <label>Nama Database :</label>
-                <input type="text" name="db_name" required="required" class="form-control">
+                <input  autocomplete="off" type="text" name="db_name" required="required" class="form-control">
                 <small class='red-text'>Buat terlebih dahulu database dengan nama yang akan digunakan</small>
               </div>
               <div class="form-group">
                 <label>Alamat Host Server :</label>
-                <input type="text" name="db_host" required="required" class="form-control" value="localhost">
+                <input  autocomplete="off" type="text" name="db_host" required="required" class="form-control" value="localhost">
               </div>
               <div class="form-group">
                 <label>Nama User Database :</label>
-                <input type="text" name="db_user" required="required" class="form-control">
+                <input  autocomplete="off" type="text" name="db_user" required="required" class="form-control">
               </div>
               <div class="form-group">
                 <label>Password Database :</label>
-                <input type="text" name="db_pass" class="form-control">
+                <input  autocomplete="off" type="text" name="db_pass" class="form-control">
               </div>
               <div class="form-group">
                 <label>Alamat Utama Aplikasi anda:</label>
-                <input type="text" name="url" required="required" class="form-control">
+                <input  autocomplete="off" type="text" name="url" required="required" class="form-control">
                 <small class='red-text'>contoh : http://127.0.0.1/cbt </small>
               </div>
               <?= $this->m_config->pesan(); ?>

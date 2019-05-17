@@ -216,7 +216,7 @@
 				      <div class="switch">
 					    <label>
 					      Off
-					      <input type="checkbox" name="XGuru2Admin" class="set_setting">
+					      <input  autocomplete="off" type="checkbox" name="XGuru2Admin" class="set_setting">
 					      <span class="lever"></span>
 					      On
 					    </label>
@@ -239,7 +239,7 @@
 				      <div class="switch">
 					    <label>
 					      Off
-					      <input type="checkbox" name="XElearning" class="set_setting">
+					      <input  autocomplete="off" type="checkbox" name="XElearning" class="set_setting">
 					      <span class="lever"></span>
 					      On
 					    </label>
@@ -256,7 +256,7 @@
 				      <div class="switch">
 					    <label>
 					      Off
-					      <input type="checkbox" name="XCbt" class="set_setting">
+					      <input  autocomplete="off" type="checkbox" name="XCbt" class="set_setting">
 					      <span class="lever"></span>
 					      On
 					    </label>
@@ -273,7 +273,7 @@
 				      <div class="switch">
 					    <label>
 					      Off
-					      <input type="checkbox" name="XNilai" class="set_setting">
+					      <input  autocomplete="off" type="checkbox" name="XNilai" class="set_setting">
 					      <span class="lever"></span>
 					      On
 					    </label>
@@ -294,13 +294,13 @@
       		<div class="row">
       			<div class="col s12 m6">
 		      		<div class="input-field">
-		      			<input type="text" name="XGuru" readonly="readonly" value="<?= $GLOBALS['u']['Username']; ?>">
+		      			<input  autocomplete="off" type="text" name="XGuru" readonly="readonly" value="<?= $GLOBALS['u']['Username']; ?>">
 		      			<label>Admin/ Guru</label>
 		      		</div>
 	  			</div>
       			<div class="col s12 m6">
 		      		<div class="input-field">
-		      			<input type="text" name="XTgl" readonly="readonly" value="<?= date("Y-m-d H:i:s"); ?>">
+		      			<input  autocomplete="off" type="text" name="XTgl" readonly="readonly" value="<?= date("Y-m-d H:i:s"); ?>">
 		      			<label>Tanggal</label>
 		      		</div>
       			</div>

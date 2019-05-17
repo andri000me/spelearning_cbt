@@ -1,3 +1,4 @@
+<?php if ($this->m_config->cfg['XServer']) { ?>
 <div class="card">
 	<div class="card-content">
 		<span class="card-title">Download Template Soal</span>
@@ -11,15 +12,18 @@
 		<!-- <a href="" class="btn green"><i class="material-icons left">cloud_download</i> Soal Agama</a> -->
 	</div>
 </div>
+<?php } ?>
 <?= $this->m_config->pesan(); ?>
 <div class="card">
 	<div class="card-content">
 		<div class="card-title">
 			Daftar Bank Soal
+			<?php if ($this->m_config->cfg['XServer']) { ?>
 			<div class="pull right">
 				<!-- <a href="<?= base_url("admin/soal/tambah"); ?>" class="modal-trigger btn cyan white-text"><i class="material-icons left">cloud_download</i> Download Data</a>	 -->
 				<a href="<?= base_url("admin/soal/tambah"); ?>" class="modal-trigger btn green white-text"><i class="material-icons left">add</i> Tambah Bank Soal</a>	
 			</div>
+			<?php } ?>
 		</div>
 		<table class="striped">
 			<thead>
@@ -30,8 +34,10 @@
 					<th>Soal</th>
 					<th>Kelas</th>
 					<th>Status</th>
+					<?php if ($this->m_config->cfg['XServer']) { ?>
 					<th>Copy | Upload | Edit</th>
 					<th nowrap="nowrap">Aksi</th>
+					<?php } ?>
 				</tr>
 			</thead>
 			<?php
@@ -90,7 +96,9 @@
 						}
 						?>
 					</td>
+					<?php if ($this->m_config->cfg['XServer']) { ?>
 					<td nowrap="nowrap">
+				
 						<a data-target="modal1" class="btn blue lighten-3 white-text " href="<?= base_url("admin/soal/kopi/".$g->Urut); ?>" >
 							<i class="material-icons">content_copy</i>
 						</a>
@@ -106,6 +114,7 @@
 						<a  href="<?= base_url("admin/soal/pdf/".$g->Urut); ?>" class="btn btn-small blue" <?= $disable; ?>><i class="material-icons">print</i></a>
 						<a <?= $disable2; ?>  onclick="return confirm('Apakah anda ingin menghapus paket soal ini ?? data yang berkaitan dengan kode pakel soal berikut akan juga dihapus');" href="<?= base_url("admin/soal/proha/".$g->Urut); ?>" class="btn btn-small red"><i class="material-icons">delete_forever</i></a>
 					</td>
+					<?php } ?>
 				</tr>
 			<?php } ?>
 		</table>

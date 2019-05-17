@@ -61,7 +61,7 @@
                     </ol>
                  
                 </div>
-                <p>Tanggal : <?= date("d M y H:i A",strtotime($p->XWaktuMulai)); ?> <b>s/d.</b> <?= date("d M y H:i A",strtotime($p->XWaktuAkhir)); ?></p>
+                <p>Tanggal : <?= tgl_bilang(strtotime($p->XWaktuMulai),1,1) ?> <b>s/d.</b> <?= tgl_bilang(strtotime($p->XWaktuAkhir),1,1); ?></p>
                 <p>dibuat oleh  <a href="<?= base_url("siswa/user/info/".$p->Username); ?>"><?= ucwords($p->Nama) ?></a></p>
                 <!-- <div class="card-action"> -->
                   <!-- <a href="" class="btn btn-floatig"><i class="material-icons left">book</i> Baca Materi Pelajaran</a> -->

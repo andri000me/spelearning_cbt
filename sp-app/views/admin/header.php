@@ -69,14 +69,16 @@
                 <li>
                   <div class="collapsible-header">
                     <a href="<?= base_url('admin/home'); ?>" class="black-text">
-                        <i class="material-icons">pie_chart_outlined</i>
+                        <i class="material-icons left">pie_chart_outlined</i>
                         <span class="nav-text">Dashboard</span>
                     </a>
                   </div>
                 </li>
               <li>
                 <div class="collapsible-header">
-                  <a href="<?= base_url('admin/user'); ?>" class="black-text"><i class="material-icons">face</i> Profile</a>
+                  <a href="<?= base_url('admin/user'); ?>" class="black-text"><i class="material-icons left">face</i>
+                    <span class="nav-text">Profile</span>
+                  </a>
                 </div>
 
               </li>
@@ -228,10 +230,41 @@
                 </li>
               </ul>
             </li>
+            <?php
+            if ($GLOBALS['lvl'] == 1 ) {
+              if ($this->m_config->cfg['XServer']) {
+                ?>
+    
+                <li>
+                  <div class="collapsible-header">
+                    <a href="<?= base_url('admin/server'); ?>" class="black-text">
+                      <i class="material-icons left">devices_other</i> 
+                      <span class="nav-text">Kelola Client</span>
+                    </a>
+                  </div>
+                </li>
+
+                <?php
+              } else {
+                ?>
+                <li>
+                  <div class="collapsible-header">
+                    <a href="<?= base_url('admin/sync'); ?>" class="black-text">
+                      <i class="material-icons left">sync</i> 
+                      <span class="nav-text">Sinkronasi</span>
+                    </a>
+                  </div>
+                </li>
+
+                <?php
+              }
+            }
+            ?>
             <li>
               <div class="collapsible-header">
                 <a href="<?= base_url('siswa/logout'); ?>" class="black-text">
-                  <i class="material-icons">keyboard_tab</i> Keluar
+                  <i class="material-icons left">keyboard_tab</i>
+                  <span class="nav-text">keluar</span>
                 </a>
               </div>
 

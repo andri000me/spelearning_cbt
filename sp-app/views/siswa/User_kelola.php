@@ -11,10 +11,10 @@
 						<div class="file-field input-field">
 					      <div class="btn">
 					        <span>Foto Anda</span>
-					        <input type="file" name="file" data-target='#form-logo'>
+					        <input  autocomplete="off" type="file" name="file" data-target='#form-logo'>
 					      </div>
 					      <div class="file-path-wrapper">
-					        <input class="file-path validate" type="text">
+					        <input  autocomplete="off" class="file-path validate" type="text">
 					      </div>
 					    </div>
 					    <small class="red-text">Max : 2000x2000 px 1mb</small>
@@ -30,11 +30,11 @@
 				<p>
 					<form method="post" action="<?= base_url("siswa/user/proedit"); ?>">
 			      		<div class="input-field">
-			      			<input type="text" name="XNamaSiswa" required="required" maxlength="100"> 
+			      			<input  autocomplete="off" type="text" name="XNamaSiswa" required="required" maxlength="100"> 
 			      			<label>Nama Siswa</label>
 			      		</div>	
 			      		<div class="input-field">
-			      			<input type="text" name="XNomerUjian" required="required" maxlength="100" readonly="readonly"> 
+			      			<input  autocomplete="off" type="text" name="XNomerUjian" required="required" maxlength="100" readonly="readonly"> 
 			      			<label>Nomer Ujian Peserta</label>
 			      		</div>	
 			      		<div class="row">
@@ -72,7 +72,7 @@
 			      			</div>
 			      			<div class="col s12 m3">
 			      				<div class="input-field">
-			      					<input type="text" name="XNIK" required="required" disabled="disabled">
+			      					<input  autocomplete="off" type="text" name="XNIK" required="required" disabled="disabled">
 			      					<label>Nomor Induk</label>
 			      				</div>
 			      			</div>
@@ -88,7 +88,7 @@
 			      			</div>
 			      			<div class="col s12 m8">
 			      				<div class="input-field">
-			      					<input type="text" name="XPassword">
+			      					<input  autocomplete="off" type="text" name="XPassword">
 			      					<label>Password</label>
 			      				</div>
 			      				<small class="red-text">Jika Lupa password setelah diganti lapor proktor</small>

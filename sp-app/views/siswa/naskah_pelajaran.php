@@ -195,7 +195,7 @@
             <div class="box-footer">
               <form action="#" onsubmit="return kirim()" method="post" novalidate="novalidate" autocomplete="off">
                 <div class="input-group">
-                  <input type="hidden" name="XTanggal" value="<?= $XTanggal; ?>">
+                  <input  autocomplete="off" type="hidden" name="XTanggal" value="<?= $XTanggal; ?>">
                   <textarea required="required" minlength="10" type="text" autocomplete="false" id="XTanya" placeholder="Tulis Pesanmu ..." class="materialize-textarea" autocomplete="off"  list="fahssfa"></textarea>
                       <span class="input-group-btn">
                         <button type="submit" class="btn blue white-text btn-flat">Kirim</button>

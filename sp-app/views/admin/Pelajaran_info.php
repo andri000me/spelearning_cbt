@@ -14,10 +14,12 @@
 	<div class="card-content">
 		<div class="card-title">
 			Daftar Pelajaran
+			<?php if ($this->m_config->cfg['XServer']) { ?>
 			<div class="pull right">
 				<!-- <a href="<?= base_url("admin/Pelajaran/tambah"); ?>" class="modal-trigger btn cyan white-text"><i class="material-icons left">cloud_download</i> Download Data</a>	 -->
 				<a href="<?= base_url("admin/Pelajaran/tambah"); ?>" class="modal-trigger btn green white-text"><i class="material-icons left">add</i> Tambah jadwal  Pelajaran</a>	
 			</div>
+			<?php } ?>
 		</div>
 		<table class="striped">
 			<thead>
@@ -50,22 +52,29 @@
 						?>
 				
 					</td>
-					<td nowrap="nowrap"><?= $g->XWaktuMulai; ?></td>
-					<td nowrap="nowrap"><?= $g->XWaktuAkhir; ?></td>
+					<td nowrap="nowrap"><?= tgl_bilang(strtotime($g->XWaktuMulai),1); ?></td>
+					<td nowrap="nowrap"><?= tgl_bilang(strtotime($g->XWaktuAkhir),1); ?></td>
 					<td><span class="red-text"><?= $g->XTokenPelajaran ;?></span></td>
 					<td nowrap="nowrap">
+						<?php if ($this->m_config->cfg['XServer']) { ?>
 						<a  href="<?= base_url("admin/Pelajaran/edit/".$g->XIdPelajaran); ?>" class="btn btn-small blue" ><i class="material-icons left">timer</i> Set</a>
 						<a <?= $g->XDisplay; ?> onclick="return confirm('Apakah anda yakin ingin mengakhiri sesi Pelajaran ini ??');" href="<?= base_url("admin/Pelajaran/prosesai/".$g->XIdPelajaran); ?>"  class="btn btn-small green"><i class="material-icons left">done_all</i> Selesai</a>
+						<a onclick="return confirm('Apakah anda yakin ingin mnghapus sesi ujian ini ??');" href="<?= base_url("admin/pelajaran/hapus/".$g->XIdPelajaran); ?>"  class="btn btn-small red"><i class="material-icons left">delete</i> Hapus</a>
+						<?php } ?>
 					</td>
 				</tr>
 			<?php } ?>
 		</table>
 	</div>
 </div>
+<a href="" class="toggle-vis" data-column="0">Name</a>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("table").dataTable({
-			responsive:true
+		var table=$("table").dataTable({
+			responsive:true,
+			"columnDefs": [
+			    { "visible": false, "targets": 3 }
+			 ]
 		});
 	});
 </script>

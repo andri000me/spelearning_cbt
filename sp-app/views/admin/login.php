@@ -67,11 +67,11 @@
                 <span>Masuk Halaman Admin/ Guru</span>
                 <p>
                   <div class="input-field">
-                    <input type="text" name="user" required="required">
+                    <input  autocomplete="off" type="text" name="user" required="required">
                     <label>Username</label>
                   </div>
                   <div class="input-field">
-                    <input type="password" name="pwd" required="required">
+                    <input  autocomplete="off" type="password" name="pwd" required="required">
                     <label>Password</label>
                   </div>
                   <?php

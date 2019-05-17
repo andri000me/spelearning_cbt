@@ -213,7 +213,7 @@
                       if ($jawaban->XPutarV < $ujian->XListening) {
                         ?>
                         <div class="" style="width: 100%;overflow-x: scroll;">
-                          <input type="hidden" name="berhenti2" id="berhenti2">
+                          <input  autocomplete="off" type="hidden" name="berhenti2" id="berhenti2">
                           <div id="jp_container_3" class="jp-video jp-video-270p"   role="application" aria-label="media player">
                             <div class="jp-type-single">
                               <div id="jquery_jplayer_3" class="jp-jplayer"></div>
@@ -371,7 +371,7 @@
                       if ($jawaban->XPutar < $ujian->XListening) {
                         ?>
                         <div class="" style="width: 100%;overflow-x: scroll;">
-                          <input type="hidden" name="berhenti1" id="berhenti1">
+                          <input  autocomplete="off" type="hidden" name="berhenti1" id="berhenti1">
                           <div id="jquery_jplayer_1" class="jp-jplayer"></div>
                             <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
                               <div class="jp-type-single">
@@ -678,7 +678,7 @@
             <p>
               <div class="input-field">
                 <label>
-                  <input type="checkbox" name="selesai" style="border: 1px solid #000;width: 35px;height: 35px;text-align: center;line-height: 40px;border-radius: 100%;background: none;"  onClick="$('#selesai1').removeAttr('disabled')">
+                  <input  autocomplete="off" type="checkbox" name="selesai" style="border: 1px solid #000;width: 35px;height: 35px;text-align: center;line-height: 40px;border-radius: 100%;background: none;"  onClick="$('#selesai1').removeAttr('disabled')">
                   <span>Centang, lalu klik selesai, jika yakin mengakhiri ujian</span>
                 </label>
               </div>
@@ -706,7 +706,7 @@
             <p>
               <div class="input-field">
                 <label>
-                  <input type="checkbox" name="selesai" style="border: 1px solid #000;width: 35px;height: 35px;text-align: center;line-height: 40px;border-radius: 100%;background: none;"  onClick="$('#selesai2').removeAttr('disabled')">
+                  <input  autocomplete="off" type="checkbox" name="selesai" style="border: 1px solid #000;width: 35px;height: 35px;text-align: center;line-height: 40px;border-radius: 100%;background: none;"  onClick="$('#selesai2').removeAttr('disabled')">
                   <span>Centang, lalu klik selesai, jika yakin mengakhiri ujian</span>
                 </label>
               </div>

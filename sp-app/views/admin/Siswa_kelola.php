@@ -5,11 +5,11 @@
 				<p>
 					<form method="post" action="<?= base_url("admin/siswa/protam"); ?>">
 			      		<div class="input-field">
-			      			<input type="text" name="XNamaSiswa" required="required" maxlength="100"> 
+			      			<input  autocomplete="off" type="text" name="XNamaSiswa" required="required" maxlength="100"> 
 			      			<label>Nama Siswa</label>
 			      		</div>	
 			      		<div class="input-field">
-			      			<input type="text" name="XNomerUjian" required="required" maxlength="100"> 
+			      			<input  autocomplete="off" type="text" name="XNomerUjian" required="required" maxlength="100"> 
 			      			<label>Nomer Ujian Peserta</label>
 			      		</div>	
 			      		<div class="row">
@@ -47,7 +47,7 @@
 			      			</div>
 			      			<div class="col s12 m3">
 			      				<div class="input-field">
-			      					<input type="text" name="XNIK" required="required">
+			      					<input  autocomplete="off" type="text" name="XNIK" required="required">
 			      					<label>Nomor Induk</label>
 			      				</div>
 			      			</div>
@@ -63,14 +63,14 @@
 			      			</div>
 			      			<div class="col s12 m5">
 			      				<div class="input-field">
-			      					<input type="text" name="XPassword">
+			      					<input  autocomplete="off" type="text" name="XPassword">
 			      					<label>Password</label>
 			      				</div>
 			      				<small class="red-text">Kosongkan untuk password random</small>
 			      			</div>
 			      			<div class="col s12 m12">
 			      				<div class="input-field">
-			      					<input type="text" name="XFoto">
+			      					<input  autocomplete="off" type="text" name="XFoto">
 			      					<label>Foto Peserta</label>
 			      					<small class="red-text">Kosongkan jika tidak ada, isikan nama file fotosiswa lengkap beserta extensi (jpg,png)</small>
 			      				</div>
@@ -90,7 +90,7 @@
 			      			</div>
 			      			<div class="col s12 m5">
 					      		<div class="input-field" style="display: none;">
-					      			<input type="text" name="XRuang"  maxlength="100" value="RUANG 1"> 
+					      			<input  autocomplete="off" type="text" name="XRuang"  maxlength="100" value="RUANG 1"> 
 					      			<label>Ruang Ujian</label>
 					      		</div>	
 			      			</div>

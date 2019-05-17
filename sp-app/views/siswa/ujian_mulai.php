@@ -30,8 +30,8 @@ foreach ($ujian->result() as $u) {
 						?>
 										
 					</ol></i></li>
-					<li class="collection-item"><b>Tanggal & Waktu Mulai Ujian</b><br/><i> : <?= date("d M. Y H:i",strtotime($u->XTglUjian)); ?></i></li>
-					<li class="collection-item"><b>Tanggal & Waktu Selesai Ujian</b><br/><i> : <?= date("d M. Y H:i",strtotime($u->XBatasMasuk)); ?></i></li>
+					<li class="collection-item"><b>Tanggal & Waktu Mulai Ujian</b><br/><i> : <?= tgl_bilang(strtotime($u->XTglUjian),1,1); ?></i></li>
+					<li class="collection-item"><b>Tanggal & Waktu Selesai Ujian</b><br/><i> : <?= tgl_bilang(strtotime($u->XBatasMasuk),1,1) ?></i></li>
 					<li class="collection-item"><b>Durasi Ujian</b><br/><i> : <?= $u->XLamaUjian; ?> Menit</i></li>
 				</ul>
 			</div>
@@ -54,7 +54,7 @@ foreach ($ujian->result() as $u) {
 
 				<form action="<?= base_url("siswa/ujian/cek/".$u->XIdUjian); ?>" method="post">
 					<div class="input-field">
-						<input type="text" name="XTokenUjian" required="required" maxlength="5">
+						<input  autocomplete="off" type="text" name="XTokenUjian" required="required" maxlength="5">
 						<label>Masukan Token Ujian</label>
 					</div>
 					<?= $this->m_config->pesan(); ?>

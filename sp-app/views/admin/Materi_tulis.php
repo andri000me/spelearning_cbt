@@ -3,19 +3,19 @@
 		<div class="row">
 			<div class="col m6">
 				<div class="input-field">
-					<input type="text" name="XKd" required="required" value="<?= $u->XKd; ?>">
+					<input  autocomplete="off" type="text" name="XKd" required="required" value="<?= $u->XKd; ?>">
 					<label>Kompetensi Dasar</label>
 				</div>
 			</div>
 			<div class="col m6">
 				<div class="input-field">
-					<input type="text" name="XJudul" required="required" value="<?= $u->XJudul; ?>">
+					<input  autocomplete="off" type="text" name="XJudul" required="required" value="<?= $u->XJudul; ?>">
 					<label>Judul Materi Pelajaran</label>
 				</div>
 			</div>
 		</div>
 	</div>
-	<input type="hidden" name="Urut" value="<?= $u->XIdMateri; ?>">
+	<input  autocomplete="off" type="hidden" name="Urut" value="<?= $u->XIdMateri; ?>">
 	<textarea id="test" name="XIsiMateri" style="display: none;"></textarea>
 	<div class="card-panel">
 		<div id="standalone-container">
@@ -113,10 +113,10 @@
 							<div class="file-field input-field">
 								<div class="btn blue btn-small">
 									<span><i class="material-icons">add</i></span>
-									<input type="file" name="files[]"  multiple="multiple">
+									<input  autocomplete="off" type="file" name="files[]"  multiple="multiple">
 								</div>
 								<div class="file-path-wrapper">
-							        <input class="file-path validate" type="text">
+							        <input  autocomplete="off" class="file-path validate" type="text">
 							     </div>
 							</div>
 						<!-- </div> -->

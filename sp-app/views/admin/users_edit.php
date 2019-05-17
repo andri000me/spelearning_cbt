@@ -5,20 +5,20 @@
 				<p>
 					<form method="post" action="<?= base_url("admin/users/proedit/".$u->Urut); ?>">
 			      		<div class="input-field">
-			      			<input type="text" name="Nama" required="required" maxlength="100" value="<?= $u->Nama; ?>">
+			      			<input  autocomplete="off" type="text" name="Nama" required="required" maxlength="100" value="<?= $u->Nama; ?>">
 			      			<label>Nama Lengkap</label>
 
 			      		</div>	
 			      		<div class="input-field">
-			      			<input type="text" name="Username" required="required" maxlength="100" value="<?= $u->Username; ?>" readonly="readonly">
+			      			<input  autocomplete="off" type="text" name="Username" required="required" maxlength="100" value="<?= $u->Username; ?>" readonly="readonly">
 			      			<label>Username</label>
 			      		</div>	
 			      		<div class="input-field">
-			      			<input type="number" name="HP" required="required" maxlength="100" value="<?= $u->HP; ?>">
+			      			<input  autocomplete="off" type="number" name="HP" required="required" maxlength="100" value="<?= $u->HP; ?>">
 			      			<label>No. HP</label>
 			      		</div>	
 			      		<div class="input-field">
-			      			<input type="password" name="Password" maxlength="100">
+			      			<input  autocomplete="off" type="password" name="Password" maxlength="100">
 			      			<label>Password</label>
 			      		</div>	
 		      			<small class="red-text">(!) Kosongkan Jika tidak akan mengubah password</small>

@@ -10,13 +10,13 @@
 						<div class="row">
 							<div class="col s12 m4">
 								<div class="input-field">
-									<input readonly="readonly" type="text" name="XKodeMateri" value="<?= $u->XKodeMateri; ?>">
+									<input  autocomplete="off" readonly="readonly" type="text" name="XKodeMateri" value="<?= $u->XKodeMateri; ?>">
 									<label>Kode Bank Materi</label>
 								</div>
 							</div>
 							<div class="col s12 m4">
 								<div class="input-field">
-									<input readonly="readonly" type="text" name="" value="<?= $u->XNamaMapel; ?>">
+									<input  autocomplete="off" readonly="readonly" type="text" name="" value="<?= $u->XNamaMapel; ?>">
 									<label>Mapel</label>
 								</div>
 							</div>
@@ -30,11 +30,11 @@
 						<div class="row">
 							<div class="col s12 m4">
 								<div class="input-field">
-									<input type="text" name="XWaktuMulai" class="datetimepicker" required="required">
+									<input  autocomplete="off" type="text" name="XWaktuMulai" class="datetimepicker" required="required" value="<?= date("Y/m/d H:i"); ?>">
 									<label> Waktu Mulai Pelajaran</label>
 								</div>
 								<div class="input-field">
-									<input type="text" class="datetimepicker" name="XWaktuAkhir" required="required">
+									<input  autocomplete="off" type="text" class="datetimepicker" name="XWaktuAkhir" required="required">
 									<label> Waktu Selesai Pelajaran</label>
 								</div>
 								<div class="input-field">
@@ -56,7 +56,7 @@
 							<div class="col s12 m4">
 								<fieldset>
 									<legend>Token Pelajaran</legend>
-									<input style="color: red;font-size: 25px;text-align: center;" type="text" name="XTokenPelajaran" readonly="readonly" required="required" value="<?= $this->m_config->get_token(); ?>">
+									<input  autocomplete="off" style="color: red;font-size: 25px;text-align: center;" type="text" name="XTokenPelajaran" readonly="readonly" required="required" value="<?= $this->m_config->get_token(); ?>">
 								</fieldset>
 								<small class="red-text">(*) Jangan Rilis token kembali jika saat mengedit Pelajaran</small>
 							</div>

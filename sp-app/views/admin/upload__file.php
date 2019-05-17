@@ -51,10 +51,10 @@
 						<div class="file-field input-field">
 							<div class="btn blue btn-small">
 								<span><i class="material-icons">add</i></span>
-								<input type="file" name="files[]" required="required" multiple="multiple">
+								<input  autocomplete="off" type="file" name="files[]" required="required" multiple="multiple">
 							</div>
 							<div class="file-path-wrapper">
-						        <input class="file-path validate" type="text">
+						        <input  autocomplete="off" class="file-path validate" type="text">
 						     </div>
 						</div>
 						<div>

@@ -21,15 +21,15 @@ if (empty($u->XFoto)) {
 					<!-- <?= print_r($s); ?> -->
 				<form action="<?= base_url('admin/user/proedit'); ?>" method="post">
 						<div class="input-field">
-							<input type="text" name="Nama" readonly="readonly"> 
+							<input  autocomplete="off" type="text" name="Nama" readonly="readonly"> 
 							<label>Nama Lengkap</label>
 						</div>
 						<div class="input-field">
-							<input type="number" name="HP" readonly="readonly"> 
+							<input  autocomplete="off" type="number" name="HP" readonly="readonly"> 
 							<label>No. HP / WhatsApp</label>
 						</div>
 						<div class="input-field">
-							<input type="email" name="Email" readonly="readonly"> 
+							<input  autocomplete="off" type="email" name="Email" readonly="readonly"> 
 							<label>E-Mail</label>
 						</div>
 						<div class="input-field">

@@ -6,7 +6,7 @@
 					<div class="row">
 						<div class="col s12 m12">
 							<div class="input-field">
-								<input type="hidden" name="Urut" value="<?= $Urut; ?>">
+								<input  autocomplete="off" type="hidden" name="Urut" value="<?= $Urut; ?>">
 								<select class='select' name="XRuang">
 									<?php
 									foreach ($ruang->result() as $key => $value) {

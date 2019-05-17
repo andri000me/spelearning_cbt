@@ -11,10 +11,10 @@
 						<div class="file-field input-field">
 					      <div class="btn">
 					        <span>Foto Anda</span>
-					        <input type="file" name="file" data-target='#form-logo'>
+					        <input  autocomplete="off" type="file" name="file" data-target='#form-logo'>
 					      </div>
 					      <div class="file-path-wrapper">
-					        <input class="file-path validate" type="text">
+					        <input  autocomplete="off" class="file-path validate" type="text">
 					      </div>
 					    </div>
 					</form>	
@@ -52,7 +52,7 @@
 										?>
 										<li class="collection-item">
 											<label>
-												<input type="checkbox" name="kelas[]" value="<?= $kk->XNamaKelas; ?>">
+												<input  autocomplete="off" type="checkbox" name="kelas[]" value="<?= $kk->XNamaKelas; ?>">
 												<span>
 													<?= $kk->XNamaKelas; ?>
 												</span>
@@ -96,19 +96,19 @@
 					<!-- <?= print_r($s); ?> -->
 				<form action="<?= base_url('admin/user/proedit'); ?>" method="post">
 						<div class="input-field">
-							<input type="text" name="Username" required="required" readonly="readonly">  
+							<input  autocomplete="off" type="text" name="Username" required="required" readonly="readonly">  
 							<label>Username</label>
 						</div>
 						<div class="input-field">
-							<input type="text" name="Nama" required="required"> 
+							<input  autocomplete="off" type="text" name="Nama" required="required"> 
 							<label>Nama Lengkap</label>
 						</div>
 						<div class="input-field">
-							<input type="number" name="HP" required="required"> 
+							<input  autocomplete="off" type="number" name="HP" required="required"> 
 							<label>No. HP / WhatsApp</label>
 						</div>
 						<div class="input-field">
-							<input type="email" name="Email" required="required"> 
+							<input  autocomplete="off" type="email" name="Email" required="required"> 
 							<label>E-Mail</label>
 						</div>
 						<div class="input-field">
@@ -129,15 +129,15 @@
 				<p>
 					<form action="<?= base_url("admin/user/propwd"); ?>" method="post">
 						<div class="input-field">
-							<input type="password" name="pwd_lama" required="required">
+							<input  autocomplete="off" type="password" name="pwd_lama" required="required">
 							<label>Password Lama</label>
 						</div>
 						<div class="input-field">
-							<input type="password" name="pwd_1" required="required">
+							<input  autocomplete="off" type="password" name="pwd_1" required="required">
 							<label>Password Baru</label>
 						</div>
 						<div class="input-field">
-							<input type="password" name="pwd_2" required="required">
+							<input  autocomplete="off" type="password" name="pwd_2" required="required">
 							<label>Konfirmasi Password Baru</label>
 						</div>
 						<div class="input-field">

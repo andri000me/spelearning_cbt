@@ -76,15 +76,15 @@
 
 
 	      				<div class="input-field">
-	      					<input type="text" name="XKodeMateri" maxlength="50" required="required">
+	      					<input  autocomplete="off" type="text" name="XKodeMateri" maxlength="50" required="required">
 	      					<label>Kodel Bank Materi</label>
 	      				</div>
 	      				<div class="input-field">
-	      					<input type="text" name="XKd" maxlength="50" required="required">
+	      					<input  autocomplete="off" type="text" name="XKd" maxlength="50" required="required">
 	      					<label>Kompetensi Dasar</label>
 	      				</div>
 	      				<div class="input-field">
-	      					<input type="text" name="XJudul" maxlength="50" required="required">
+	      					<input  autocomplete="off" type="text" name="XJudul" maxlength="50" required="required">
 	      					<label>Judul Materi Pelajaran</label>
 	      				</div>
       			  		<div class="input-field">

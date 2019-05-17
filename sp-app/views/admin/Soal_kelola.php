@@ -71,7 +71,7 @@
 							<label>Kelas</label>
 						</div>
 	      				<div class="input-field">
-	      					<input type="text" name="XKodeSoal" maxlength="50" required="required">
+	      					<input  autocomplete="off" type="text" name="XKodeSoal" maxlength="50" required="required">
 	      					<label>Kodel Bank Soal</label>
 	      				</div>
 	      				<div class="input-field">
@@ -86,12 +86,12 @@
 	      					<label>Jumlah Opsi Jawaban</label>
 	      				</div>
 	      				<div class="input-field">
-	      					<input type="number" min="1" max="200" name="XPilGanda" required="required">
+	      					<input  autocomplete="off" type="number" min="1" max="200" name="XPilGanda" required="required">
 	      					<label>Jumlah Pilihan Ganda yang ditampilkan</label>
 	      				</div>
       					<!-- <small class="red-text">* Jumlah yang ditampilkan</small> -->
 	      				<div class="input-field">
-	      					<input type="number" min="1" max="100" name="XPersenPil" value="100" readonly="readonly">
+	      					<input  autocomplete="off" type="number" min="1" max="100" name="XPersenPil" value="100" readonly="readonly">
 	      					<label>Bobot Pilihan (%)</label>
 	      				</div>
       			  		<div class="input-field">

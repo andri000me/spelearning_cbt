@@ -16,10 +16,12 @@
 	<div class="card-content">
 		<div class="card-title">
 			Daftar Bank Materi Pelajaran
+			<?php if ($this->m_config->cfg['XServer']) { ?>
 			<div class="pull right">
 				<!-- <a href="<?= base_url("admin/materi/tambah"); ?>" class="modal-trigger btn cyan white-text"><i class="material-icons left">cloud_download</i> Download Data</a>	 -->
 				<a href="<?= base_url("admin/materi/tambah"); ?>" class="modal-trigger btn green white-text"><i class="material-icons left">add</i> Tambah Materi</a>	
 			</div>
+			<?php } ?>
 		</div>
 		<table class="striped">
 			<thead>
@@ -69,6 +71,7 @@
 						?>
 					</td>
 					<td nowrap="nowrap">
+						<?php if ($this->m_config->cfg['XServer']) { ?>
 						<!-- <a data-target="modal1" class="btn blue lighten-3 white-text " href="<?= base_url("admin/materi/kopi/".$g->Urut); ?>" > -->
 							<!-- <i class="material-icons">content_copy</i> -->
 						<!-- </a> -->
@@ -78,11 +81,13 @@
 						<a data-target="modal1"  class="btn green white-text " href="<?= base_url("admin/materi/edit_materi/".$g->Urut); ?>"  >
 							<i class="material-icons">mode_edit</i>
 						</a>
-
+						<?php } ?>
 					</td>
 					<td nowrap="nowrap">
+						<?php if ($this->m_config->cfg['XServer']) { ?>
 						<!-- <a  href="<?= base_url("admin/materi/pdf/".$g->Urut); ?>" class="btn btn-small blue" ><i class="material-icons">print</i></a> -->
 						<a   onclick="return confirm('Apakah anda ingin menghapus paket soal ini ?? data yang berkaitan dengan kode pakel soal berikut akan juga dihapus');" href="<?= base_url("admin/materi/proha/".$g->Urut); ?>" class="btn btn-small red"><i class="material-icons">delete_forever</i></a>
+						<?php } ?>
 					</td>
 				</tr>
 			<?php } ?>
