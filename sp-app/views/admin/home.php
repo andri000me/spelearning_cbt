@@ -271,7 +271,7 @@
 		    		</div>
 		    	</div>
 	    		<?php
-	    		if ($this->m_config->cfg['XServer']) {
+	    		if (!$this->m_config->cfg['XServer']) {
 	    			?>
 	    			<script type="text/javascript">
 		    			$("[name='XServer']").attr('checked', 'checked');
