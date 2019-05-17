@@ -449,7 +449,7 @@ class Sync extends CI_Controller {
 			['XIdServer' => $this->m_config->cfg['XIdServer'],'data' => $data]
 		));
 		if ($res->status) {
-			$this->db->update("cbt_admin",'LastSync',time());
+			$this->db->update("cbt_admin",['LastSync' => time()]);
 		}	
 		$this->output
 	      ->set_status_header(200)
