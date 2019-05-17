@@ -254,6 +254,43 @@
 		    		</div>
 		    	</div>
 			</li>
+		    <li class="collection-item dismissable">
+		    	<div class="row">
+		    		<div class="col s7">
+		    			Mode Aplikasi Client
+		    		</div>
+		    		<div class="col s5">
+				      <div class="switch">
+					    <label>
+					      Off
+					      <input  autocomplete="off" onclick="return setServer()" type="checkbox" name="XServer" >
+					      <span class="lever"></span>
+					      On
+					    </label>
+					  </div>
+		    		</div>
+		    	</div>
+	    		<?php
+	    		if ($this->m_config->cfg['XServer']) {
+	    			?>
+	    			<script type="text/javascript">
+		    			$("[name='XServer']").attr('checked', 'checked');
+	    			</script>
+	    			<?php
+	    		}
+	    		?>
+
+		    	<script type="text/javascript">
+		    		function setServer(){
+		    			$.get('<?= base_url('admin/home/set_server'); ?>', function(data) {
+		    				if (data.success) {
+		    					location.reload();
+		    				}
+		    			},'json');
+		    		}
+
+		    	</script>
+			</li>
 	  	</ul>
 			<ul id="task-card" class="collection with-header">
 		    <li class="collection-header teal accent-4">
