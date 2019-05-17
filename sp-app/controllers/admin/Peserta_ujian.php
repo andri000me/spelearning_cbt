@@ -142,7 +142,6 @@ class Peserta_ujian extends CI_Controller {
 
 		$this->db->order_by("XNomerUjian","ASC");
 
-
 		$d['siswa']=$this->db->get("cbt_siswa");
 		$this->load->view('head_meta',$d);
 		$this->load->view('admin/header',$d);

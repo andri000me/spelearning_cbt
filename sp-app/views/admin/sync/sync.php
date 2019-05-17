@@ -20,13 +20,13 @@
 					<div>
 						<label>Terakhir Sinkronasi</label>
 						<?php
-						if (empty($this->m_config->cfg['LastSync']) || $this->m_config->cfg['LastSync'] == 0 || $this->m_config->cfg['LastSync']) {
+						if (empty($this->m_config->cfg['LastSync']) || $this->m_config->cfg['LastSync'] == 0 ) {
 							$LastSync="Belum Pernah Sinkronasi";
 						} else {
 							$LastSync=tgl_bilang($this->m_config->cfg['LastSync'],1);
 						}
 						?>
-						<input  autocomplete="off" type="text" name="XLastSync" readonly="readonly" value="<?= $LastSync; ?>">
+						<input class="red-text"  autocomplete="off" type="text" name="XLastSync" readonly="readonly" value="<?= $LastSync; ?>">
 					</div>
 					<div>
 						<button class="btn green"><i class="material-icons left">check</i> SIMPAN</button>
