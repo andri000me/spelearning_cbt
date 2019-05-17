@@ -15,7 +15,7 @@
               <div style="padding: 0 30px">
                 <a href="<?= base_url("admin/home"); ?>" class="brand-logo">
                     <!-- <i class="material-icons">school</i> -->
-                    <span class="logo-text ">SPanel</span>
+                    <span class="logo-text "><?= $this->m_config->cfg['XSekolah']; ?></span>
                 </a>
 
               </div>
