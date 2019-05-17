@@ -49,6 +49,36 @@
 	    </div>
     </a>
 <?php } ?>
+    <a href="<?= base_url("admin/materi"); ?>">
+      <div class="col s12 m4 l3">
+        <div class="card gradient-45deg-indigo-light-blue gradient-shadow min-height-100 white-text">
+          <div class="padding-4">
+            <div class="col s6 m6">
+              <i class="material-icons background-round mt-5">book</i>
+            </div>
+            <div class="col s6 m6 right-align">
+              <h5 class="mb-0"><b><?= $total['materi']; ?></b></h5>
+              <p class="no-margin">Bank Materi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a href="<?= base_url("admin/soal"); ?>">
+    	<div class="col s12 m4 l3">
+	      <div class="card gradient-45deg-orange-amber gradient-shadow min-height-100 white-text">
+	        <div class="padding-4">
+	          <div class="col s6 m6">
+	            <i class="material-icons background-round mt-5">border_color</i>
+	          </div>
+	          <div class="col s6 m6 right-align">
+	            <h5 class="mb-0"><b><?= $total['soal']; ?></b></h5>
+	            <p class="no-margin">Bank Soal</p>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+    </a>
     <a href="<?= base_url("admin/pelajaran"); ?>">
       <div class="col s12 m4 l3">
         <div class="card gradient-45deg-purple-deep-purple gradient-shadow min-height-100 white-text">
