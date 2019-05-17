@@ -2,10 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 11.1
--- Dumped by pg_dump version 11.1
+-- Dumped from database version 11.2 (Debian 11.2-1.pgdg90+1)
+-- Dumped by pg_dump version 11.2
 
--- Started on 2019-03-10 12:17:44 WIB
+-- Started on 2019-05-17 15:51:08 UTC
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -22,8 +22,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 196 (class 1259 OID 28550)
--- Name: cbt_admin; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 196 (class 1259 OID 34172)
+-- Name: cbt_admin; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_admin (
@@ -48,15 +48,20 @@ CREATE TABLE public.cbt_admin (
     "XLogin" character varying(50) NOT NULL,
     xinstall character varying(200) NOT NULL,
     "XPengumuman" text NOT NULL,
-    "XTimeZone" character varying(20)
+    "XTimeZone" character varying(20),
+    "XServer" boolean DEFAULT false NOT NULL,
+    "XIdServer" character varying(20) DEFAULT '00000'::character varying NOT NULL,
+    "XHostServer" character varying(100) DEFAULT 'http://localhost'::character varying NOT NULL,
+    "XToken" character varying(6) DEFAULT ''::character varying NOT NULL,
+    "LastSync" character varying(12) DEFAULT '0'::character varying NOT NULL
 );
 
 
-ALTER TABLE public.cbt_admin OWNER TO paijo;
+ALTER TABLE public.cbt_admin OWNER TO postgres;
 
 --
--- TOC entry 197 (class 1259 OID 28556)
--- Name: cbt_admin_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 197 (class 1259 OID 34178)
+-- Name: cbt_admin_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_admin_Urut_seq"
@@ -68,20 +73,62 @@ CREATE SEQUENCE public."cbt_admin_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_admin_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_admin_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3181 (class 0 OID 0)
+-- TOC entry 3186 (class 0 OID 0)
 -- Dependencies: 197
--- Name: cbt_admin_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_admin_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_admin_Urut_seq" OWNED BY public.cbt_admin."Urut";
 
 
 --
--- TOC entry 198 (class 1259 OID 28558)
--- Name: cbt_config; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 233 (class 1259 OID 34489)
+-- Name: cbt_client; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cbt_client (
+    "Urut" integer NOT NULL,
+    "XNama" character varying(50) NOT NULL,
+    "XIdServer" character varying(50) NOT NULL,
+    "XToken" character varying(6) DEFAULT ''::character varying NOT NULL,
+    "LastSync" character varying(12) DEFAULT '0'::character varying NOT NULL,
+    "XStatus" boolean DEFAULT false NOT NULL
+);
+
+
+ALTER TABLE public.cbt_client OWNER TO postgres;
+
+--
+-- TOC entry 232 (class 1259 OID 34487)
+-- Name: cbt_cleint_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."cbt_cleint_Urut_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."cbt_cleint_Urut_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3187 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: cbt_cleint_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."cbt_cleint_Urut_seq" OWNED BY public.cbt_client."Urut";
+
+
+--
+-- TOC entry 198 (class 1259 OID 34180)
+-- Name: cbt_config; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_config (
@@ -93,11 +140,11 @@ CREATE TABLE public.cbt_config (
 );
 
 
-ALTER TABLE public.cbt_config OWNER TO paijo;
+ALTER TABLE public.cbt_config OWNER TO postgres;
 
 --
--- TOC entry 199 (class 1259 OID 28565)
--- Name: cbt_config_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 199 (class 1259 OID 34187)
+-- Name: cbt_config_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_config_Urut_seq"
@@ -109,20 +156,20 @@ CREATE SEQUENCE public."cbt_config_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_config_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_config_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3182 (class 0 OID 0)
+-- TOC entry 3188 (class 0 OID 0)
 -- Dependencies: 199
--- Name: cbt_config_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_config_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_config_Urut_seq" OWNED BY public.cbt_config."Urut";
 
 
 --
--- TOC entry 200 (class 1259 OID 28567)
--- Name: cbt_jawaban; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 200 (class 1259 OID 34189)
+-- Name: cbt_jawaban; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_jawaban (
@@ -132,11 +179,11 @@ CREATE TABLE public.cbt_jawaban (
     "XIdUjian" integer NOT NULL,
     "XNomerUjian" character varying(20) NOT NULL,
     "XTokenUjian" character varying(5) NOT NULL,
-    "XA" integer NOT NULL,
-    "XB" integer NOT NULL,
-    "XC" integer NOT NULL,
-    "XD" integer NOT NULL,
-    "XE" integer NOT NULL,
+    "XA" integer,
+    "XB" integer,
+    "XC" integer,
+    "XD" integer,
+    "XE" integer,
     "XJawaban" character varying(1),
     "XTemp" character varying(1),
     "XJawabanEsai" character varying(1),
@@ -159,11 +206,11 @@ CREATE TABLE public.cbt_jawaban (
 );
 
 
-ALTER TABLE public.cbt_jawaban OWNER TO paijo;
+ALTER TABLE public.cbt_jawaban OWNER TO postgres;
 
 --
--- TOC entry 201 (class 1259 OID 28570)
--- Name: cbt_jawaban_Urutan_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 201 (class 1259 OID 34192)
+-- Name: cbt_jawaban_Urutan_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_jawaban_Urutan_seq"
@@ -175,20 +222,20 @@ CREATE SEQUENCE public."cbt_jawaban_Urutan_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_jawaban_Urutan_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_jawaban_Urutan_seq" OWNER TO postgres;
 
 --
--- TOC entry 3183 (class 0 OID 0)
+-- TOC entry 3189 (class 0 OID 0)
 -- Dependencies: 201
--- Name: cbt_jawaban_Urutan_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_jawaban_Urutan_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_jawaban_Urutan_seq" OWNED BY public.cbt_jawaban."Urutan";
 
 
 --
--- TOC entry 202 (class 1259 OID 28572)
--- Name: cbt_kelas; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 202 (class 1259 OID 34194)
+-- Name: cbt_kelas; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_kelas (
@@ -196,15 +243,17 @@ CREATE TABLE public.cbt_kelas (
     "XNamaKelas" character varying(20) NOT NULL,
     "XKodeJurusan" character varying(20) NOT NULL,
     "XKodeKelas" character varying(10) NOT NULL,
-    "XStatusKelas" character varying(1) NOT NULL
+    "XStatusKelas" character varying(1) NOT NULL,
+    "LastSync" character varying(12) DEFAULT '0'::character varying NOT NULL,
+    "LastUpdate" character varying(12) DEFAULT '0'::character varying NOT NULL
 );
 
 
-ALTER TABLE public.cbt_kelas OWNER TO paijo;
+ALTER TABLE public.cbt_kelas OWNER TO postgres;
 
 --
--- TOC entry 203 (class 1259 OID 28575)
--- Name: cbt_kelas_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 203 (class 1259 OID 34197)
+-- Name: cbt_kelas_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_kelas_Urut_seq"
@@ -216,20 +265,20 @@ CREATE SEQUENCE public."cbt_kelas_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_kelas_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_kelas_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3184 (class 0 OID 0)
+-- TOC entry 3190 (class 0 OID 0)
 -- Dependencies: 203
--- Name: cbt_kelas_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_kelas_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_kelas_Urut_seq" OWNED BY public.cbt_kelas."Urut";
 
 
 --
--- TOC entry 204 (class 1259 OID 28577)
--- Name: cbt_mapel; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 204 (class 1259 OID 34199)
+-- Name: cbt_mapel; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_mapel (
@@ -237,15 +286,17 @@ CREATE TABLE public.cbt_mapel (
     "XKodeMapel" character varying(10) NOT NULL,
     "XNamaMapel" character varying(30) NOT NULL,
     "XKKM" double precision NOT NULL,
-    "XMapelAgama" character(1) DEFAULT 'N'::bpchar NOT NULL
+    "XMapelAgama" character(1) DEFAULT 'N'::bpchar NOT NULL,
+    "LastSync" character varying(12) DEFAULT '0'::character varying NOT NULL,
+    "LastUpdate" character varying(12) DEFAULT '0'::character varying NOT NULL
 );
 
 
-ALTER TABLE public.cbt_mapel OWNER TO paijo;
+ALTER TABLE public.cbt_mapel OWNER TO postgres;
 
 --
--- TOC entry 205 (class 1259 OID 28581)
--- Name: cbt_mapel_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 205 (class 1259 OID 34203)
+-- Name: cbt_mapel_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_mapel_Urut_seq"
@@ -257,20 +308,20 @@ CREATE SEQUENCE public."cbt_mapel_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_mapel_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_mapel_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3185 (class 0 OID 0)
+-- TOC entry 3191 (class 0 OID 0)
 -- Dependencies: 205
--- Name: cbt_mapel_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_mapel_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_mapel_Urut_seq" OWNED BY public.cbt_mapel."Urut";
 
 
 --
--- TOC entry 206 (class 1259 OID 28583)
--- Name: cbt_nilai; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 206 (class 1259 OID 34205)
+-- Name: cbt_nilai; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_nilai (
@@ -292,11 +343,11 @@ CREATE TABLE public.cbt_nilai (
 );
 
 
-ALTER TABLE public.cbt_nilai OWNER TO paijo;
+ALTER TABLE public.cbt_nilai OWNER TO postgres;
 
 --
--- TOC entry 207 (class 1259 OID 28586)
--- Name: cbt_nilai_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 207 (class 1259 OID 34208)
+-- Name: cbt_nilai_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_nilai_Urut_seq"
@@ -308,20 +359,20 @@ CREATE SEQUENCE public."cbt_nilai_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_nilai_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_nilai_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3186 (class 0 OID 0)
+-- TOC entry 3192 (class 0 OID 0)
 -- Dependencies: 207
--- Name: cbt_nilai_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_nilai_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_nilai_Urut_seq" OWNED BY public.cbt_nilai."Urut";
 
 
 --
--- TOC entry 208 (class 1259 OID 28588)
--- Name: cbt_paketmateri_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 208 (class 1259 OID 34210)
+-- Name: cbt_paketmateri_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_paketmateri_Urut_seq"
@@ -332,11 +383,11 @@ CREATE SEQUENCE public."cbt_paketmateri_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_paketmateri_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_paketmateri_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 209 (class 1259 OID 28590)
--- Name: cbt_paketmateri; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 209 (class 1259 OID 34212)
+-- Name: cbt_paketmateri; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_paketmateri (
@@ -354,51 +405,53 @@ CREATE TABLE public.cbt_paketmateri (
     "XKodeMateri" character varying(255) NOT NULL,
     "XFile" text,
     "XUjian" text,
-    "XNamaKelas" text
+    "XNamaKelas" text,
+    "LastSync" character varying(12) DEFAULT '0'::character varying NOT NULL,
+    "LastUpdate" character varying(12) DEFAULT '0'::character varying NOT NULL
 );
 
 
-ALTER TABLE public.cbt_paketmateri OWNER TO paijo;
+ALTER TABLE public.cbt_paketmateri OWNER TO postgres;
 
 --
--- TOC entry 3187 (class 0 OID 0)
+-- TOC entry 3193 (class 0 OID 0)
 -- Dependencies: 209
--- Name: COLUMN cbt_paketmateri."XJudul"; Type: COMMENT; Schema: public; Owner: paijo
+-- Name: COLUMN cbt_paketmateri."XJudul"; Type: COMMENT; Schema: public; Owner: postgres
 --
 
 COMMENT ON COLUMN public.cbt_paketmateri."XJudul" IS 'Judul materi pembelajaran';
 
 
 --
--- TOC entry 3188 (class 0 OID 0)
+-- TOC entry 3194 (class 0 OID 0)
 -- Dependencies: 209
--- Name: COLUMN cbt_paketmateri."XKodeMateri"; Type: COMMENT; Schema: public; Owner: paijo
+-- Name: COLUMN cbt_paketmateri."XKodeMateri"; Type: COMMENT; Schema: public; Owner: postgres
 --
 
 COMMENT ON COLUMN public.cbt_paketmateri."XKodeMateri" IS 'Kode Materi ';
 
 
 --
--- TOC entry 3189 (class 0 OID 0)
+-- TOC entry 3195 (class 0 OID 0)
 -- Dependencies: 209
--- Name: COLUMN cbt_paketmateri."XFile"; Type: COMMENT; Schema: public; Owner: paijo
+-- Name: COLUMN cbt_paketmateri."XFile"; Type: COMMENT; Schema: public; Owner: postgres
 --
 
 COMMENT ON COLUMN public.cbt_paketmateri."XFile" IS 'FIle yang dilampirkan';
 
 
 --
--- TOC entry 3190 (class 0 OID 0)
+-- TOC entry 3196 (class 0 OID 0)
 -- Dependencies: 209
--- Name: COLUMN cbt_paketmateri."XNamaKelas"; Type: COMMENT; Schema: public; Owner: paijo
+-- Name: COLUMN cbt_paketmateri."XNamaKelas"; Type: COMMENT; Schema: public; Owner: postgres
 --
 
 COMMENT ON COLUMN public.cbt_paketmateri."XNamaKelas" IS 'json kelas';
 
 
 --
--- TOC entry 210 (class 1259 OID 28598)
--- Name: cbt_paketsoal; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 210 (class 1259 OID 34220)
+-- Name: cbt_paketsoal; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_paketsoal (
@@ -421,15 +474,17 @@ CREATE TABLE public.cbt_paketsoal (
     "XTglBuat" date NOT NULL,
     "XPaketSoal" text,
     "XSemua" character varying(10) DEFAULT 'T'::character varying NOT NULL,
-    "XNamaKelas" text
+    "XNamaKelas" text,
+    "LastSync" character varying(12) DEFAULT '0'::character varying NOT NULL,
+    "LastUpdate" character varying(12) DEFAULT '0'::character varying NOT NULL
 );
 
 
-ALTER TABLE public.cbt_paketsoal OWNER TO paijo;
+ALTER TABLE public.cbt_paketsoal OWNER TO postgres;
 
 --
--- TOC entry 211 (class 1259 OID 28608)
--- Name: cbt_paketsoal_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 211 (class 1259 OID 34230)
+-- Name: cbt_paketsoal_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_paketsoal_Urut_seq"
@@ -441,41 +496,43 @@ CREATE SEQUENCE public."cbt_paketsoal_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_paketsoal_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_paketsoal_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3191 (class 0 OID 0)
+-- TOC entry 3197 (class 0 OID 0)
 -- Dependencies: 211
--- Name: cbt_paketsoal_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_paketsoal_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_paketsoal_Urut_seq" OWNED BY public.cbt_paketsoal."Urut";
 
 
 --
--- TOC entry 212 (class 1259 OID 28610)
--- Name: cbt_pelajaran; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 212 (class 1259 OID 34232)
+-- Name: cbt_pelajaran; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_pelajaran (
     "Urut" integer NOT NULL,
     "XKodeMateri" character varying(255) NOT NULL,
-    "XWaktuMulai" character varying(100) NOT NULL,
-    "XWaktuAkhir" character varying(100) NOT NULL,
     "XTanya" integer DEFAULT 0 NOT NULL,
     "XStatusPelajaran" character varying(1) DEFAULT '1'::character varying NOT NULL,
     "XTokenPelajaran" character varying(100) NOT NULL,
     "XGuru" character varying(30) NOT NULL,
     "XTglBuat" date NOT NULL,
-    "XStatusToken" character varying(1) NOT NULL
+    "XStatusToken" character varying(1) NOT NULL,
+    "XWaktuMulai" timestamp without time zone NOT NULL,
+    "XWaktuAkhir" timestamp without time zone NOT NULL,
+    "LastSync" character varying(12) DEFAULT '0'::character varying NOT NULL,
+    "LastUpdate" character varying(12) DEFAULT '0'::character varying NOT NULL
 );
 
 
-ALTER TABLE public.cbt_pelajaran OWNER TO paijo;
+ALTER TABLE public.cbt_pelajaran OWNER TO postgres;
 
 --
--- TOC entry 213 (class 1259 OID 28618)
--- Name: cbt_pelajaran_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 213 (class 1259 OID 34240)
+-- Name: cbt_pelajaran_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_pelajaran_Urut_seq"
@@ -487,20 +544,20 @@ CREATE SEQUENCE public."cbt_pelajaran_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_pelajaran_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_pelajaran_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3192 (class 0 OID 0)
+-- TOC entry 3198 (class 0 OID 0)
 -- Dependencies: 213
--- Name: cbt_pelajaran_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_pelajaran_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_pelajaran_Urut_seq" OWNED BY public.cbt_pelajaran."Urut";
 
 
 --
--- TOC entry 214 (class 1259 OID 28620)
--- Name: cbt_pesan; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 214 (class 1259 OID 34242)
+-- Name: cbt_pesan; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_pesan (
@@ -511,11 +568,11 @@ CREATE TABLE public.cbt_pesan (
 );
 
 
-ALTER TABLE public.cbt_pesan OWNER TO paijo;
+ALTER TABLE public.cbt_pesan OWNER TO postgres;
 
 --
--- TOC entry 215 (class 1259 OID 28626)
--- Name: cbt_pesan_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 215 (class 1259 OID 34248)
+-- Name: cbt_pesan_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_pesan_Urut_seq"
@@ -527,20 +584,20 @@ CREATE SEQUENCE public."cbt_pesan_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_pesan_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_pesan_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3193 (class 0 OID 0)
+-- TOC entry 3199 (class 0 OID 0)
 -- Dependencies: 215
--- Name: cbt_pesan_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_pesan_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_pesan_Urut_seq" OWNED BY public.cbt_pesan."Urut";
 
 
 --
--- TOC entry 216 (class 1259 OID 28628)
--- Name: cbt_siswa; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 216 (class 1259 OID 34250)
+-- Name: cbt_siswa; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_siswa (
@@ -558,15 +615,17 @@ CREATE TABLE public.cbt_siswa (
     "XSesi" character varying(11),
     "XRuang" character varying(15),
     "XPilihan" character varying(50),
-    "XNamaKelas" character varying(20) NOT NULL
+    "XNamaKelas" character varying(20) NOT NULL,
+    "LastSync" character varying(12) DEFAULT '0'::character varying NOT NULL,
+    "LastUpdate" character varying(12) DEFAULT '0'::character varying NOT NULL
 );
 
 
-ALTER TABLE public.cbt_siswa OWNER TO paijo;
+ALTER TABLE public.cbt_siswa OWNER TO postgres;
 
 --
--- TOC entry 217 (class 1259 OID 28635)
--- Name: cbt_siswa_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 217 (class 1259 OID 34257)
+-- Name: cbt_siswa_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_siswa_Urut_seq"
@@ -578,20 +637,20 @@ CREATE SEQUENCE public."cbt_siswa_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_siswa_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_siswa_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3194 (class 0 OID 0)
+-- TOC entry 3200 (class 0 OID 0)
 -- Dependencies: 217
--- Name: cbt_siswa_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_siswa_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_siswa_Urut_seq" OWNED BY public.cbt_siswa."Urut";
 
 
 --
--- TOC entry 218 (class 1259 OID 28637)
--- Name: cbt_siswa_pelajaran_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 218 (class 1259 OID 34259)
+-- Name: cbt_siswa_pelajaran_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_siswa_pelajaran_Urut_seq"
@@ -602,11 +661,11 @@ CREATE SEQUENCE public."cbt_siswa_pelajaran_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_siswa_pelajaran_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_siswa_pelajaran_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 219 (class 1259 OID 28639)
--- Name: cbt_siswa_pelajaran; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 219 (class 1259 OID 34261)
+-- Name: cbt_siswa_pelajaran; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_siswa_pelajaran (
@@ -617,15 +676,17 @@ CREATE TABLE public.cbt_siswa_pelajaran (
     "XTokenPelajaran" character varying(60) NOT NULL,
     "XGetIP" character varying(20) NOT NULL,
     "XStatusPelajaran" integer DEFAULT 0 NOT NULL,
-    "XSisaWaktu" integer DEFAULT 0 NOT NULL
+    "XSisaWaktu" integer DEFAULT 0 NOT NULL,
+    "LastSync" character varying(12) DEFAULT '0'::character varying NOT NULL,
+    "LastUpdate" character varying(12) DEFAULT '0'::character varying NOT NULL
 );
 
 
-ALTER TABLE public.cbt_siswa_pelajaran OWNER TO paijo;
+ALTER TABLE public.cbt_siswa_pelajaran OWNER TO postgres;
 
 --
--- TOC entry 220 (class 1259 OID 28646)
--- Name: cbt_siswa_ujian; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 220 (class 1259 OID 34268)
+-- Name: cbt_siswa_ujian; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_siswa_ujian (
@@ -636,15 +697,17 @@ CREATE TABLE public.cbt_siswa_ujian (
     "XTokenUjian" character varying(60) NOT NULL,
     "XGetIP" character varying(20) NOT NULL,
     "XStatusUjian" integer DEFAULT 0 NOT NULL,
-    "XSisaWaktu" integer DEFAULT 0 NOT NULL
+    "XSisaWaktu" integer DEFAULT 0 NOT NULL,
+    "LastSync" character varying(12) DEFAULT '0'::character varying NOT NULL,
+    "LastUpdate" character varying(12) DEFAULT '0'::character varying NOT NULL
 );
 
 
-ALTER TABLE public.cbt_siswa_ujian OWNER TO paijo;
+ALTER TABLE public.cbt_siswa_ujian OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 28652)
--- Name: cbt_siswa_ujian_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 221 (class 1259 OID 34274)
+-- Name: cbt_siswa_ujian_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_siswa_ujian_Urut_seq"
@@ -656,20 +719,20 @@ CREATE SEQUENCE public."cbt_siswa_ujian_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_siswa_ujian_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_siswa_ujian_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3195 (class 0 OID 0)
+-- TOC entry 3201 (class 0 OID 0)
 -- Dependencies: 221
--- Name: cbt_siswa_ujian_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_siswa_ujian_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_siswa_ujian_Urut_seq" OWNED BY public.cbt_siswa_ujian."Urut";
 
 
 --
--- TOC entry 222 (class 1259 OID 28654)
--- Name: cbt_soal; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 222 (class 1259 OID 34276)
+-- Name: cbt_soal; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_soal (
@@ -696,42 +759,44 @@ CREATE TABLE public.cbt_soal (
     "XKategori" integer DEFAULT 1 NOT NULL,
     "XAcakSoal" character(255) DEFAULT 'A'::bpchar NOT NULL,
     "XAcakOpsi" character varying(1) NOT NULL,
-    "XAgama" character(1)
+    "XAgama" character(1),
+    "LastSync" character varying(12) DEFAULT '0'::character varying NOT NULL,
+    "LastUpdate" character varying(12) DEFAULT '0'::character varying NOT NULL
 );
 
 
-ALTER TABLE public.cbt_soal OWNER TO paijo;
+ALTER TABLE public.cbt_soal OWNER TO postgres;
 
 --
--- TOC entry 3196 (class 0 OID 0)
+-- TOC entry 3202 (class 0 OID 0)
 -- Dependencies: 222
--- Name: COLUMN cbt_soal."XAudioTanya"; Type: COMMENT; Schema: public; Owner: paijo
+-- Name: COLUMN cbt_soal."XAudioTanya"; Type: COMMENT; Schema: public; Owner: postgres
 --
 
 COMMENT ON COLUMN public.cbt_soal."XAudioTanya" IS 'File Audo / Musik';
 
 
 --
--- TOC entry 3197 (class 0 OID 0)
+-- TOC entry 3203 (class 0 OID 0)
 -- Dependencies: 222
--- Name: COLUMN cbt_soal."XVideoTanya"; Type: COMMENT; Schema: public; Owner: paijo
+-- Name: COLUMN cbt_soal."XVideoTanya"; Type: COMMENT; Schema: public; Owner: postgres
 --
 
 COMMENT ON COLUMN public.cbt_soal."XVideoTanya" IS 'FIle Video';
 
 
 --
--- TOC entry 3198 (class 0 OID 0)
+-- TOC entry 3204 (class 0 OID 0)
 -- Dependencies: 222
--- Name: COLUMN cbt_soal."XGambarTanya"; Type: COMMENT; Schema: public; Owner: paijo
+-- Name: COLUMN cbt_soal."XGambarTanya"; Type: COMMENT; Schema: public; Owner: postgres
 --
 
 COMMENT ON COLUMN public.cbt_soal."XGambarTanya" IS 'File Gambar';
 
 
 --
--- TOC entry 223 (class 1259 OID 28663)
--- Name: cbt_soal_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 223 (class 1259 OID 34285)
+-- Name: cbt_soal_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_soal_Urut_seq"
@@ -743,20 +808,20 @@ CREATE SEQUENCE public."cbt_soal_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_soal_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_soal_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3199 (class 0 OID 0)
+-- TOC entry 3205 (class 0 OID 0)
 -- Dependencies: 223
--- Name: cbt_soal_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_soal_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_soal_Urut_seq" OWNED BY public.cbt_soal."Urut";
 
 
 --
--- TOC entry 224 (class 1259 OID 28665)
--- Name: cbt_tanya_pelajaran; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 224 (class 1259 OID 34287)
+-- Name: cbt_tanya_pelajaran; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_tanya_pelajaran (
@@ -770,11 +835,11 @@ CREATE TABLE public.cbt_tanya_pelajaran (
 );
 
 
-ALTER TABLE public.cbt_tanya_pelajaran OWNER TO paijo;
+ALTER TABLE public.cbt_tanya_pelajaran OWNER TO postgres;
 
 --
--- TOC entry 225 (class 1259 OID 28673)
--- Name: cbt_tanya_pelajaran_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 225 (class 1259 OID 34295)
+-- Name: cbt_tanya_pelajaran_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_tanya_pelajaran_Urut_seq"
@@ -786,20 +851,20 @@ CREATE SEQUENCE public."cbt_tanya_pelajaran_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_tanya_pelajaran_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_tanya_pelajaran_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3200 (class 0 OID 0)
+-- TOC entry 3206 (class 0 OID 0)
 -- Dependencies: 225
--- Name: cbt_tanya_pelajaran_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_tanya_pelajaran_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_tanya_pelajaran_Urut_seq" OWNED BY public.cbt_tanya_pelajaran."Urut";
 
 
 --
--- TOC entry 226 (class 1259 OID 28675)
--- Name: cbt_tes; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 226 (class 1259 OID 34297)
+-- Name: cbt_tes; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_tes (
@@ -809,11 +874,11 @@ CREATE TABLE public.cbt_tes (
 );
 
 
-ALTER TABLE public.cbt_tes OWNER TO paijo;
+ALTER TABLE public.cbt_tes OWNER TO postgres;
 
 --
--- TOC entry 227 (class 1259 OID 28678)
--- Name: cbt_tes_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 227 (class 1259 OID 34300)
+-- Name: cbt_tes_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_tes_Urut_seq"
@@ -825,20 +890,20 @@ CREATE SEQUENCE public."cbt_tes_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_tes_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_tes_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3201 (class 0 OID 0)
+-- TOC entry 3207 (class 0 OID 0)
 -- Dependencies: 227
--- Name: cbt_tes_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_tes_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_tes_Urut_seq" OWNED BY public.cbt_tes."Urut";
 
 
 --
--- TOC entry 228 (class 1259 OID 28680)
--- Name: cbt_ujian; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 228 (class 1259 OID 34302)
+-- Name: cbt_ujian; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_ujian (
@@ -869,15 +934,17 @@ CREATE TABLE public.cbt_ujian (
     "XLevel" character varying(10),
     "XPdf" integer,
     "XFilePdf" character varying(200),
-    "XListening" integer DEFAULT 1 NOT NULL
+    "XListening" integer DEFAULT 1 NOT NULL,
+    "LastSync" character varying(12) DEFAULT '0'::character varying NOT NULL,
+    "LastUpdate" character varying(12) DEFAULT '0'::character varying NOT NULL
 );
 
 
-ALTER TABLE public.cbt_ujian OWNER TO paijo;
+ALTER TABLE public.cbt_ujian OWNER TO postgres;
 
 --
--- TOC entry 229 (class 1259 OID 28688)
--- Name: cbt_ujian_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 229 (class 1259 OID 34310)
+-- Name: cbt_ujian_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_ujian_Urut_seq"
@@ -889,20 +956,20 @@ CREATE SEQUENCE public."cbt_ujian_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_ujian_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_ujian_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3202 (class 0 OID 0)
+-- TOC entry 3208 (class 0 OID 0)
 -- Dependencies: 229
--- Name: cbt_ujian_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_ujian_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_ujian_Urut_seq" OWNED BY public.cbt_ujian."Urut";
 
 
 --
--- TOC entry 230 (class 1259 OID 28690)
--- Name: cbt_user; Type: TABLE; Schema: public; Owner: paijo
+-- TOC entry 230 (class 1259 OID 34312)
+-- Name: cbt_user; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cbt_user (
@@ -918,15 +985,17 @@ CREATE TABLE public.cbt_user (
     login integer NOT NULL,
     "Status" character(255) NOT NULL,
     "XFoto" character varying(50),
-    "XKelas" text
+    "XKelas" text,
+    "LastSync" character varying(12) DEFAULT '0'::character varying NOT NULL,
+    "LastUpdate" character varying(12) DEFAULT '0'::character varying NOT NULL
 );
 
 
-ALTER TABLE public.cbt_user OWNER TO paijo;
+ALTER TABLE public.cbt_user OWNER TO postgres;
 
 --
--- TOC entry 231 (class 1259 OID 28696)
--- Name: cbt_user_Urut_seq; Type: SEQUENCE; Schema: public; Owner: paijo
+-- TOC entry 231 (class 1259 OID 34318)
+-- Name: cbt_user_Urut_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public."cbt_user_Urut_seq"
@@ -938,345 +1007,484 @@ CREATE SEQUENCE public."cbt_user_Urut_seq"
     CACHE 1;
 
 
-ALTER TABLE public."cbt_user_Urut_seq" OWNER TO paijo;
+ALTER TABLE public."cbt_user_Urut_seq" OWNER TO postgres;
 
 --
--- TOC entry 3203 (class 0 OID 0)
+-- TOC entry 3209 (class 0 OID 0)
 -- Dependencies: 231
--- Name: cbt_user_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: paijo
+-- Name: cbt_user_Urut_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public."cbt_user_Urut_seq" OWNED BY public.cbt_user."Urut";
 
 
 --
--- TOC entry 2886 (class 2604 OID 28698)
--- Name: cbt_admin Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2858 (class 2604 OID 34320)
+-- Name: cbt_admin Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_admin ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_admin_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2891 (class 2604 OID 28699)
--- Name: cbt_config Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2929 (class 2604 OID 34492)
+-- Name: cbt_client Urut; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cbt_client ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_cleint_Urut_seq"'::regclass);
+
+
+--
+-- TOC entry 2868 (class 2604 OID 34321)
+-- Name: cbt_config Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_config ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_config_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2892 (class 2604 OID 28700)
--- Name: cbt_jawaban Urutan; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2869 (class 2604 OID 34322)
+-- Name: cbt_jawaban Urutan; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_jawaban ALTER COLUMN "Urutan" SET DEFAULT nextval('public."cbt_jawaban_Urutan_seq"'::regclass);
 
 
 --
--- TOC entry 2893 (class 2604 OID 28701)
--- Name: cbt_kelas Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2870 (class 2604 OID 34323)
+-- Name: cbt_kelas Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_kelas ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_kelas_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2895 (class 2604 OID 28702)
--- Name: cbt_mapel Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2874 (class 2604 OID 34324)
+-- Name: cbt_mapel Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_mapel ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_mapel_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2896 (class 2604 OID 28703)
--- Name: cbt_nilai Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2877 (class 2604 OID 34325)
+-- Name: cbt_nilai Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_nilai ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_nilai_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2903 (class 2604 OID 28704)
--- Name: cbt_paketsoal Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2886 (class 2604 OID 34326)
+-- Name: cbt_paketsoal Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_paketsoal ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_paketsoal_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2906 (class 2604 OID 28705)
--- Name: cbt_pelajaran Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2891 (class 2604 OID 34327)
+-- Name: cbt_pelajaran Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_pelajaran ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_pelajaran_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2907 (class 2604 OID 28706)
--- Name: cbt_pesan Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2894 (class 2604 OID 34328)
+-- Name: cbt_pesan Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_pesan ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_pesan_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2909 (class 2604 OID 28707)
--- Name: cbt_siswa Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2896 (class 2604 OID 34329)
+-- Name: cbt_siswa Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_siswa ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_siswa_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2917 (class 2604 OID 28708)
--- Name: cbt_siswa_ujian Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2908 (class 2604 OID 34330)
+-- Name: cbt_siswa_ujian Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_siswa_ujian ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_siswa_ujian_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2921 (class 2604 OID 28709)
--- Name: cbt_soal Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2914 (class 2604 OID 34331)
+-- Name: cbt_soal Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_soal ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_soal_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2924 (class 2604 OID 28710)
--- Name: cbt_tanya_pelajaran Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2919 (class 2604 OID 34332)
+-- Name: cbt_tanya_pelajaran Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_tanya_pelajaran ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_tanya_pelajaran_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2925 (class 2604 OID 28711)
--- Name: cbt_tes Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2920 (class 2604 OID 34333)
+-- Name: cbt_tes Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_tes ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_tes_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2928 (class 2604 OID 28712)
--- Name: cbt_ujian Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2923 (class 2604 OID 34334)
+-- Name: cbt_ujian Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_ujian ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_ujian_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 2929 (class 2604 OID 28713)
--- Name: cbt_user Urut; Type: DEFAULT; Schema: public; Owner: paijo
+-- TOC entry 2926 (class 2604 OID 34335)
+-- Name: cbt_user Urut; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_user ALTER COLUMN "Urut" SET DEFAULT nextval('public."cbt_user_Urut_seq"'::regclass);
 
 
 --
--- TOC entry 3140 (class 0 OID 28550)
+-- TOC entry 3143 (class 0 OID 34172)
 -- Dependencies: 196
--- Data for Name: cbt_admin; Type: TABLE DATA; Schema: public; Owner: paijo
+-- Data for Name: cbt_admin; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.cbt_admin VALUES (1, 'SP E-elarning CBT v3.7', 'SMK/SMA/MA', '127.0.0.1', 'Jl. Raya Ajibarang KM 1', 'Ajibarang', 'Banyumas', 'Jawa Tengah', '083873272419', '083873272419', 'manusa@manusa.sch.id', 'logo_lp_maarif_svg2.png', 'banner.png', 'Zaenudin, S.Pd.,M.Si', '#F7F107', '1', 'SMK98678698789', '-', 'bg-2.png', '', '', 'Asia/Jakarta');
+INSERT INTO public.cbt_admin ("Urut", "XSekolah", "XTingkat", "XIp", "XAlamat", "XKec", "XKab", "XProp", "XTelp", "XFax", "XEmail", "XLogo", "XBanner", "XKepSek", "XWarna", "XStatus", "XKodeSekolah", "XNIPKepsek", "XLogin", xinstall, "XPengumuman", "XTimeZone", "XServer", "XIdServer", "XHostServer", "XToken", "LastSync") VALUES (1, 'SP E-elarning CBT v3.7', 'SMK/SMA/MA', '127.0.0.1', 'Jl. Raya Ajibarang KM 1', 'Ajibarang', 'Banyumas', 'Jawa Tengah', '083873272419', '083873272419', 'manusa@manusa.sch.id', 'logo_lp_maarif_svg2.png', 'banner.png', 'Zaenudin, S.Pd.,M.Si', '#F7F107', '1', 'SMK98678698789', '-', 'bg-2.png', '', '', 'Asia/Jakarta', true, 'LAB4', 'http://172.18.0.1/project/cbt_new/', '', '1558078641');
 
 
 --
--- TOC entry 3142 (class 0 OID 28558)
+-- TOC entry 3180 (class 0 OID 34489)
+-- Dependencies: 233
+-- Data for Name: cbt_client; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.cbt_client ("Urut", "XNama", "XIdServer", "XToken", "LastSync", "XStatus") VALUES (4, 'Lab4', 'LAB4', '', '0', true);
+
+
+--
+-- TOC entry 3145 (class 0 OID 34180)
 -- Dependencies: 198
--- Data for Name: cbt_config; Type: TABLE DATA; Schema: public; Owner: paijo
+-- Data for Name: cbt_config; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.cbt_config VALUES (1, 0, 0, 1, 0);
+INSERT INTO public.cbt_config ("Urut", "XNilai", "XElearning", "XCbt", "XGuru2Admin") VALUES (1, 0, 1, 1, 0);
 
 
 --
--- TOC entry 3144 (class 0 OID 28567)
+-- TOC entry 3147 (class 0 OID 34189)
 -- Dependencies: 200
--- Data for Name: cbt_jawaban; Type: TABLE DATA; Schema: public; Owner: paijo
+-- Data for Name: cbt_jawaban; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 3146 (class 0 OID 28572)
+-- TOC entry 3149 (class 0 OID 34194)
 -- Dependencies: 202
--- Data for Name: cbt_kelas; Type: TABLE DATA; Schema: public; Owner: paijo
+-- Data for Name: cbt_kelas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.cbt_user VALUES (1, 'admin', '$6$SPangat$186zmKxG2gD/JQIXVo9Bspw/sUnRdHUIblEdkI5/.ltycK1//fbJkiXTC0eV577mej.MoorBV7MKCxhxqYgqM.', '', 'Mohamad Supangat', ' Jl.Raya Ajibarang Km 1', '083873272419', '', 'supangatoy@gmail.com', 1, '1                                                                                                                                                                                                                                                              ', 'foto_biru.png', '');
 
 
 --
--- TOC entry 3204 (class 0 OID 0)
+-- TOC entry 3151 (class 0 OID 34199)
+-- Dependencies: 204
+-- Data for Name: cbt_mapel; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3153 (class 0 OID 34205)
+-- Dependencies: 206
+-- Data for Name: cbt_nilai; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3156 (class 0 OID 34212)
+-- Dependencies: 209
+-- Data for Name: cbt_paketmateri; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3157 (class 0 OID 34220)
+-- Dependencies: 210
+-- Data for Name: cbt_paketsoal; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3159 (class 0 OID 34232)
+-- Dependencies: 212
+-- Data for Name: cbt_pelajaran; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3161 (class 0 OID 34242)
+-- Dependencies: 214
+-- Data for Name: cbt_pesan; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3163 (class 0 OID 34250)
+-- Dependencies: 216
+-- Data for Name: cbt_siswa; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3166 (class 0 OID 34261)
+-- Dependencies: 219
+-- Data for Name: cbt_siswa_pelajaran; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3167 (class 0 OID 34268)
+-- Dependencies: 220
+-- Data for Name: cbt_siswa_ujian; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3169 (class 0 OID 34276)
+-- Dependencies: 222
+-- Data for Name: cbt_soal; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3171 (class 0 OID 34287)
+-- Dependencies: 224
+-- Data for Name: cbt_tanya_pelajaran; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3173 (class 0 OID 34297)
+-- Dependencies: 226
+-- Data for Name: cbt_tes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.cbt_tes ("Urut", "XKodeUjian", "XNamaUjian") VALUES (10, 'UTS', 'Ulangan Tengah Semester');
+
+
+--
+-- TOC entry 3175 (class 0 OID 34302)
+-- Dependencies: 228
+-- Data for Name: cbt_ujian; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3177 (class 0 OID 34312)
+-- Dependencies: 230
+-- Data for Name: cbt_user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.cbt_user ("Urut", "Username", "Password", "NIP", "Nama", "Alamat", "HP", "Faxs", "Email", login, "Status", "XFoto", "XKelas", "LastSync", "LastUpdate") VALUES (1, 'admin', '$6$SPangat$g7zqC7UruNNoBio9hcLYn9knFJt4iKTUfp/Som6XY2HKCP2gDrYh2NuEexV6z..Te00EG2uifjQ84AShyerre1', '', 'Mohamad Supangat', ' Jl.Raya Ajibarang Km 1', '083873272419', '', 'supangatoy@gmail.com', 1, '1                                                                                                                                                                                                                                                              ', 'foto_biru.png', '', '0', '0');
+
+
+--
+-- TOC entry 3210 (class 0 OID 0)
 -- Dependencies: 197
--- Name: cbt_admin_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
+-- Name: cbt_admin_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public."cbt_admin_Urut_seq"', 1, true);
 
 
 --
--- TOC entry 3205 (class 0 OID 0)
+-- TOC entry 3211 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: cbt_cleint_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_cleint_Urut_seq"', 4, true);
+
+
+--
+-- TOC entry 3212 (class 0 OID 0)
 -- Dependencies: 199
--- Name: cbt_config_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
+-- Name: cbt_config_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public."cbt_config_Urut_seq"', 1, true);
 
 
 --
--- TOC entry 3206 (class 0 OID 0)
--- Dependencies: 201
--- Name: cbt_jawaban_Urutan_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_jawaban_Urutan_seq"', 2303, true);
-
-
---
--- TOC entry 3207 (class 0 OID 0)
--- Dependencies: 203
--- Name: cbt_kelas_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_kelas_Urut_seq"', 82, true);
-
-
---
--- TOC entry 3208 (class 0 OID 0)
--- Dependencies: 205
--- Name: cbt_mapel_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_mapel_Urut_seq"', 140, true);
-
-
---
--- TOC entry 3209 (class 0 OID 0)
--- Dependencies: 207
--- Name: cbt_nilai_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_nilai_Urut_seq"', 99, true);
-
-
---
--- TOC entry 3210 (class 0 OID 0)
--- Dependencies: 208
--- Name: cbt_paketmateri_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_paketmateri_Urut_seq"', 12, true);
-
-
---
--- TOC entry 3211 (class 0 OID 0)
--- Dependencies: 211
--- Name: cbt_paketsoal_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_paketsoal_Urut_seq"', 74, true);
-
-
---
--- TOC entry 3212 (class 0 OID 0)
--- Dependencies: 213
--- Name: cbt_pelajaran_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_pelajaran_Urut_seq"', 5, true);
-
-
---
 -- TOC entry 3213 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: cbt_jawaban_Urutan_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_jawaban_Urutan_seq"', 2346, true);
+
+
+--
+-- TOC entry 3214 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: cbt_kelas_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_kelas_Urut_seq"', 101, true);
+
+
+--
+-- TOC entry 3215 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: cbt_mapel_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_mapel_Urut_seq"', 191, true);
+
+
+--
+-- TOC entry 3216 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: cbt_nilai_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_nilai_Urut_seq"', 101, true);
+
+
+--
+-- TOC entry 3217 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: cbt_paketmateri_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_paketmateri_Urut_seq"', 15, true);
+
+
+--
+-- TOC entry 3218 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: cbt_paketsoal_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_paketsoal_Urut_seq"', 78, true);
+
+
+--
+-- TOC entry 3219 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: cbt_pelajaran_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_pelajaran_Urut_seq"', 8, true);
+
+
+--
+-- TOC entry 3220 (class 0 OID 0)
 -- Dependencies: 215
--- Name: cbt_pesan_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
+-- Name: cbt_pesan_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public."cbt_pesan_Urut_seq"', 7, true);
 
 
 --
--- TOC entry 3214 (class 0 OID 0)
--- Dependencies: 217
--- Name: cbt_siswa_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_siswa_Urut_seq"', 13901, true);
-
-
---
--- TOC entry 3215 (class 0 OID 0)
--- Dependencies: 218
--- Name: cbt_siswa_pelajaran_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_siswa_pelajaran_Urut_seq"', 4, true);
-
-
---
--- TOC entry 3216 (class 0 OID 0)
--- Dependencies: 221
--- Name: cbt_siswa_ujian_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_siswa_ujian_Urut_seq"', 109, true);
-
-
---
--- TOC entry 3217 (class 0 OID 0)
--- Dependencies: 223
--- Name: cbt_soal_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_soal_Urut_seq"', 1453, true);
-
-
---
--- TOC entry 3218 (class 0 OID 0)
--- Dependencies: 225
--- Name: cbt_tanya_pelajaran_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_tanya_pelajaran_Urut_seq"', 156, true);
-
-
---
--- TOC entry 3219 (class 0 OID 0)
--- Dependencies: 227
--- Name: cbt_tes_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_tes_Urut_seq"', 9, true);
-
-
---
--- TOC entry 3220 (class 0 OID 0)
--- Dependencies: 229
--- Name: cbt_ujian_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
---
-
-SELECT pg_catalog.setval('public."cbt_ujian_Urut_seq"', 23, true);
-
-
---
 -- TOC entry 3221 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: cbt_siswa_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_siswa_Urut_seq"', 13946, true);
+
+
+--
+-- TOC entry 3222 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: cbt_siswa_pelajaran_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_siswa_pelajaran_Urut_seq"', 6, true);
+
+
+--
+-- TOC entry 3223 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: cbt_siswa_ujian_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_siswa_ujian_Urut_seq"', 112, true);
+
+
+--
+-- TOC entry 3224 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: cbt_soal_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_soal_Urut_seq"', 1705, true);
+
+
+--
+-- TOC entry 3225 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: cbt_tanya_pelajaran_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_tanya_pelajaran_Urut_seq"', 164, true);
+
+
+--
+-- TOC entry 3226 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: cbt_tes_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_tes_Urut_seq"', 10, true);
+
+
+--
+-- TOC entry 3227 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: cbt_ujian_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."cbt_ujian_Urut_seq"', 26, true);
+
+
+--
+-- TOC entry 3228 (class 0 OID 0)
 -- Dependencies: 231
--- Name: cbt_user_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: paijo
+-- Name: cbt_user_Urut_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public."cbt_user_Urut_seq"', 82, true);
 
 
 --
--- TOC entry 2931 (class 2606 OID 28715)
--- Name: cbt_admin cbt_admin_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2934 (class 2606 OID 34337)
+-- Name: cbt_admin cbt_admin_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_admin
@@ -1284,8 +1492,8 @@ ALTER TABLE ONLY public.cbt_admin
 
 
 --
--- TOC entry 2933 (class 2606 OID 28717)
--- Name: cbt_config cbt_config_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2936 (class 2606 OID 34339)
+-- Name: cbt_config cbt_config_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_config
@@ -1293,8 +1501,8 @@ ALTER TABLE ONLY public.cbt_config
 
 
 --
--- TOC entry 2939 (class 2606 OID 28719)
--- Name: cbt_jawaban cbt_jawaban_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2942 (class 2606 OID 34341)
+-- Name: cbt_jawaban cbt_jawaban_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_jawaban
@@ -1302,8 +1510,8 @@ ALTER TABLE ONLY public.cbt_jawaban
 
 
 --
--- TOC entry 2943 (class 2606 OID 28721)
--- Name: cbt_kelas cbt_kelas_XNamaKelas_key; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2946 (class 2606 OID 34343)
+-- Name: cbt_kelas cbt_kelas_XNamaKelas_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_kelas
@@ -1311,8 +1519,8 @@ ALTER TABLE ONLY public.cbt_kelas
 
 
 --
--- TOC entry 2945 (class 2606 OID 28723)
--- Name: cbt_kelas cbt_kelas_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2948 (class 2606 OID 34345)
+-- Name: cbt_kelas cbt_kelas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_kelas
@@ -1320,8 +1528,8 @@ ALTER TABLE ONLY public.cbt_kelas
 
 
 --
--- TOC entry 2947 (class 2606 OID 28725)
--- Name: cbt_mapel cbt_mapel_XKodeMapel; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2950 (class 2606 OID 34347)
+-- Name: cbt_mapel cbt_mapel_XKodeMapel; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_mapel
@@ -1329,8 +1537,8 @@ ALTER TABLE ONLY public.cbt_mapel
 
 
 --
--- TOC entry 2949 (class 2606 OID 28727)
--- Name: cbt_mapel cbt_mapel_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2952 (class 2606 OID 34349)
+-- Name: cbt_mapel cbt_mapel_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_mapel
@@ -1338,8 +1546,8 @@ ALTER TABLE ONLY public.cbt_mapel
 
 
 --
--- TOC entry 2951 (class 2606 OID 28729)
--- Name: cbt_nilai cbt_nilai_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2954 (class 2606 OID 34351)
+-- Name: cbt_nilai cbt_nilai_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_nilai
@@ -1347,8 +1555,8 @@ ALTER TABLE ONLY public.cbt_nilai
 
 
 --
--- TOC entry 2954 (class 2606 OID 28731)
--- Name: cbt_paketmateri cbt_paketmapel_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2957 (class 2606 OID 34353)
+-- Name: cbt_paketmateri cbt_paketmapel_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_paketmateri
@@ -1356,8 +1564,8 @@ ALTER TABLE ONLY public.cbt_paketmateri
 
 
 --
--- TOC entry 2956 (class 2606 OID 28733)
--- Name: cbt_paketmateri cbt_paketmateri_XKodeMateri; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2959 (class 2606 OID 34355)
+-- Name: cbt_paketmateri cbt_paketmateri_XKodeMateri; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_paketmateri
@@ -1365,8 +1573,8 @@ ALTER TABLE ONLY public.cbt_paketmateri
 
 
 --
--- TOC entry 2960 (class 2606 OID 28735)
--- Name: cbt_paketsoal cbt_paketsoal_XKodeSoal_key; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2963 (class 2606 OID 34357)
+-- Name: cbt_paketsoal cbt_paketsoal_XKodeSoal_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_paketsoal
@@ -1374,8 +1582,8 @@ ALTER TABLE ONLY public.cbt_paketsoal
 
 
 --
--- TOC entry 2962 (class 2606 OID 28737)
--- Name: cbt_paketsoal cbt_paketsoal_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2965 (class 2606 OID 34359)
+-- Name: cbt_paketsoal cbt_paketsoal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_paketsoal
@@ -1383,8 +1591,8 @@ ALTER TABLE ONLY public.cbt_paketsoal
 
 
 --
--- TOC entry 2964 (class 2606 OID 28739)
--- Name: cbt_pelajaran cbt_pelajaran_Urut; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2967 (class 2606 OID 34361)
+-- Name: cbt_pelajaran cbt_pelajaran_Urut; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_pelajaran
@@ -1392,8 +1600,8 @@ ALTER TABLE ONLY public.cbt_pelajaran
 
 
 --
--- TOC entry 2966 (class 2606 OID 28741)
--- Name: cbt_pelajaran cbt_pelajaran_XTokenPelajaran; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2969 (class 2606 OID 34363)
+-- Name: cbt_pelajaran cbt_pelajaran_XTokenPelajaran; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_pelajaran
@@ -1401,8 +1609,8 @@ ALTER TABLE ONLY public.cbt_pelajaran
 
 
 --
--- TOC entry 2969 (class 2606 OID 28743)
--- Name: cbt_pesan cbt_pesan_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2972 (class 2606 OID 34365)
+-- Name: cbt_pesan cbt_pesan_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_pesan
@@ -1410,8 +1618,8 @@ ALTER TABLE ONLY public.cbt_pesan
 
 
 --
--- TOC entry 2973 (class 2606 OID 28745)
--- Name: cbt_siswa cbt_siswa_XNIK_key; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2976 (class 2606 OID 34367)
+-- Name: cbt_siswa cbt_siswa_XNIK_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_siswa
@@ -1419,8 +1627,8 @@ ALTER TABLE ONLY public.cbt_siswa
 
 
 --
--- TOC entry 2976 (class 2606 OID 28747)
--- Name: cbt_siswa cbt_siswa_XNomerUjian_key; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2979 (class 2606 OID 34369)
+-- Name: cbt_siswa cbt_siswa_XNomerUjian_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_siswa
@@ -1428,8 +1636,8 @@ ALTER TABLE ONLY public.cbt_siswa
 
 
 --
--- TOC entry 2983 (class 2606 OID 28749)
--- Name: cbt_siswa_pelajaran cbt_siswa_pelajaran_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2986 (class 2606 OID 34371)
+-- Name: cbt_siswa_pelajaran cbt_siswa_pelajaran_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_siswa_pelajaran
@@ -1437,8 +1645,8 @@ ALTER TABLE ONLY public.cbt_siswa_pelajaran
 
 
 --
--- TOC entry 2978 (class 2606 OID 28751)
--- Name: cbt_siswa cbt_siswa_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2981 (class 2606 OID 34373)
+-- Name: cbt_siswa cbt_siswa_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_siswa
@@ -1446,8 +1654,8 @@ ALTER TABLE ONLY public.cbt_siswa
 
 
 --
--- TOC entry 2988 (class 2606 OID 28753)
--- Name: cbt_siswa_ujian cbt_siswa_ujian_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2991 (class 2606 OID 34375)
+-- Name: cbt_siswa_ujian cbt_siswa_ujian_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_siswa_ujian
@@ -1455,8 +1663,8 @@ ALTER TABLE ONLY public.cbt_siswa_ujian
 
 
 --
--- TOC entry 2992 (class 2606 OID 28755)
--- Name: cbt_soal cbt_soal_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2995 (class 2606 OID 34377)
+-- Name: cbt_soal cbt_soal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_soal
@@ -1464,8 +1672,8 @@ ALTER TABLE ONLY public.cbt_soal
 
 
 --
--- TOC entry 2994 (class 2606 OID 28757)
--- Name: cbt_tes cbt_tes_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 2997 (class 2606 OID 34379)
+-- Name: cbt_tes cbt_tes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_tes
@@ -1473,8 +1681,8 @@ ALTER TABLE ONLY public.cbt_tes
 
 
 --
--- TOC entry 2997 (class 2606 OID 28759)
--- Name: cbt_ujian cbt_ujian_XTokenUjian_key; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3000 (class 2606 OID 34381)
+-- Name: cbt_ujian cbt_ujian_XTokenUjian_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_ujian
@@ -1482,8 +1690,8 @@ ALTER TABLE ONLY public.cbt_ujian
 
 
 --
--- TOC entry 2999 (class 2606 OID 28761)
--- Name: cbt_ujian cbt_ujian_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3002 (class 2606 OID 34383)
+-- Name: cbt_ujian cbt_ujian_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_ujian
@@ -1491,8 +1699,8 @@ ALTER TABLE ONLY public.cbt_ujian
 
 
 --
--- TOC entry 3002 (class 2606 OID 28763)
--- Name: cbt_user cbt_user_Username; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3005 (class 2606 OID 34385)
+-- Name: cbt_user cbt_user_Username; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_user
@@ -1500,8 +1708,8 @@ ALTER TABLE ONLY public.cbt_user
 
 
 --
--- TOC entry 3004 (class 2606 OID 28765)
--- Name: cbt_user cbt_user_pkey; Type: CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3007 (class 2606 OID 34387)
+-- Name: cbt_user cbt_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_user
@@ -1509,192 +1717,192 @@ ALTER TABLE ONLY public.cbt_user
 
 
 --
--- TOC entry 2934 (class 1259 OID 28766)
--- Name: cbt_jawaban_XIdUjian; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2937 (class 1259 OID 34388)
+-- Name: cbt_jawaban_XIdUjian; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_jawaban_XIdUjian" ON public.cbt_jawaban USING btree ("XIdUjian");
 
 
 --
--- TOC entry 2935 (class 1259 OID 28767)
--- Name: cbt_jawaban_XNomerSoal; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2938 (class 1259 OID 34389)
+-- Name: cbt_jawaban_XNomerSoal; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_jawaban_XNomerSoal" ON public.cbt_jawaban USING btree ("XNomerSoal");
 
 
 --
--- TOC entry 2936 (class 1259 OID 28768)
--- Name: cbt_jawaban_XNomerUjian; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2939 (class 1259 OID 34390)
+-- Name: cbt_jawaban_XNomerUjian; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_jawaban_XNomerUjian" ON public.cbt_jawaban USING btree ("XNomerUjian");
 
 
 --
--- TOC entry 2937 (class 1259 OID 28769)
--- Name: cbt_jawaban_XTokenUjian; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2940 (class 1259 OID 34391)
+-- Name: cbt_jawaban_XTokenUjian; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_jawaban_XTokenUjian" ON public.cbt_jawaban USING btree ("XTokenUjian");
 
 
 --
--- TOC entry 2940 (class 1259 OID 28770)
--- Name: cbt_kelas_XKodeJurusan; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2943 (class 1259 OID 34392)
+-- Name: cbt_kelas_XKodeJurusan; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_kelas_XKodeJurusan" ON public.cbt_kelas USING btree ("XKodeJurusan");
 
 
 --
--- TOC entry 2941 (class 1259 OID 28771)
--- Name: cbt_kelas_XKodeKelas; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2944 (class 1259 OID 34393)
+-- Name: cbt_kelas_XKodeKelas; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_kelas_XKodeKelas" ON public.cbt_kelas USING btree ("XKodeKelas");
 
 
 --
--- TOC entry 2952 (class 1259 OID 28772)
--- Name: cbt_paketmapel_Urut; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2955 (class 1259 OID 34394)
+-- Name: cbt_paketmapel_Urut; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_paketmapel_Urut" ON public.cbt_paketmateri USING btree ("Urut");
 
 
 --
--- TOC entry 2957 (class 1259 OID 28773)
--- Name: cbt_paketsoal_Urut; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2960 (class 1259 OID 34395)
+-- Name: cbt_paketsoal_Urut; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_paketsoal_Urut" ON public.cbt_paketsoal USING btree ("Urut");
 
 
 --
--- TOC entry 2958 (class 1259 OID 28774)
--- Name: cbt_paketsoal_XGuru; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2961 (class 1259 OID 34396)
+-- Name: cbt_paketsoal_XGuru; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_paketsoal_XGuru" ON public.cbt_paketsoal USING btree ("XGuru");
 
 
 --
--- TOC entry 2967 (class 1259 OID 28775)
--- Name: cbt_pesan_XGuru; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2970 (class 1259 OID 34397)
+-- Name: cbt_pesan_XGuru; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_pesan_XGuru" ON public.cbt_pesan USING btree ("XGuru");
 
 
 --
--- TOC entry 2970 (class 1259 OID 28776)
--- Name: cbt_siswa_XKodeJurusan; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2973 (class 1259 OID 34398)
+-- Name: cbt_siswa_XKodeJurusan; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_siswa_XKodeJurusan" ON public.cbt_siswa USING btree ("XKodeJurusan");
 
 
 --
--- TOC entry 2971 (class 1259 OID 28777)
--- Name: cbt_siswa_XKodeKelas; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2974 (class 1259 OID 34399)
+-- Name: cbt_siswa_XKodeKelas; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_siswa_XKodeKelas" ON public.cbt_siswa USING btree ("XKodeKelas");
 
 
 --
--- TOC entry 2974 (class 1259 OID 28778)
--- Name: cbt_siswa_XNamaKelas; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2977 (class 1259 OID 34400)
+-- Name: cbt_siswa_XNamaKelas; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_siswa_XNamaKelas" ON public.cbt_siswa USING btree ("XNamaKelas");
 
 
 --
--- TOC entry 2979 (class 1259 OID 28779)
--- Name: cbt_siswa_pelajaran_XNomerUjian; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2982 (class 1259 OID 34401)
+-- Name: cbt_siswa_pelajaran_XNomerUjian; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_siswa_pelajaran_XNomerUjian" ON public.cbt_siswa_pelajaran USING btree ("XNomerUjian");
 
 
 --
--- TOC entry 2980 (class 1259 OID 28780)
--- Name: cbt_siswa_pelajaran_XTokenPelajaran; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2983 (class 1259 OID 34402)
+-- Name: cbt_siswa_pelajaran_XTokenPelajaran; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_siswa_pelajaran_XTokenPelajaran" ON public.cbt_siswa_pelajaran USING btree ("XTokenPelajaran");
 
 
 --
--- TOC entry 2981 (class 1259 OID 28781)
--- Name: cbt_siswa_pelajaran_id_pelajaran; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2984 (class 1259 OID 34403)
+-- Name: cbt_siswa_pelajaran_id_pelajaran; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX cbt_siswa_pelajaran_id_pelajaran ON public.cbt_siswa_pelajaran USING btree ("XIdPelajaran");
 
 
 --
--- TOC entry 2984 (class 1259 OID 28782)
--- Name: cbt_siswa_ujian_XNomerUjian; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2987 (class 1259 OID 34404)
+-- Name: cbt_siswa_ujian_XNomerUjian; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_siswa_ujian_XNomerUjian" ON public.cbt_siswa_ujian USING btree ("XNomerUjian");
 
 
 --
--- TOC entry 2985 (class 1259 OID 28783)
--- Name: cbt_siswa_ujian_XTokenUjian; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2988 (class 1259 OID 34405)
+-- Name: cbt_siswa_ujian_XTokenUjian; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_siswa_ujian_XTokenUjian" ON public.cbt_siswa_ujian USING btree ("XTokenUjian");
 
 
 --
--- TOC entry 2986 (class 1259 OID 28784)
--- Name: cbt_siswa_ujian_id_ujian; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2989 (class 1259 OID 34406)
+-- Name: cbt_siswa_ujian_id_ujian; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX cbt_siswa_ujian_id_ujian ON public.cbt_siswa_ujian USING btree ("XIdUjian");
 
 
 --
--- TOC entry 2989 (class 1259 OID 28785)
--- Name: cbt_soal_XKodeSoal; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2992 (class 1259 OID 34407)
+-- Name: cbt_soal_XKodeSoal; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_soal_XKodeSoal" ON public.cbt_soal USING btree ("XKodeSoal");
 
 
 --
--- TOC entry 2990 (class 1259 OID 28786)
--- Name: cbt_soal_XNomerSoal; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2993 (class 1259 OID 34408)
+-- Name: cbt_soal_XNomerSoal; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_soal_XNomerSoal" ON public.cbt_soal USING btree ("XNomerSoal");
 
 
 --
--- TOC entry 2995 (class 1259 OID 28787)
--- Name: cbt_ujian_XKodeSoal; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 2998 (class 1259 OID 34409)
+-- Name: cbt_ujian_XKodeSoal; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX "cbt_ujian_XKodeSoal" ON public.cbt_ujian USING btree ("XKodeSoal");
 
 
 --
--- TOC entry 3000 (class 1259 OID 28788)
--- Name: cbt_ujian_token; Type: INDEX; Schema: public; Owner: paijo
+-- TOC entry 3003 (class 1259 OID 34410)
+-- Name: cbt_ujian_token; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE INDEX cbt_ujian_token ON public.cbt_ujian USING btree ("XTokenUjian");
 
 
 --
--- TOC entry 3005 (class 2606 OID 28789)
--- Name: cbt_jawaban cbt_jawaban_XIdUjian_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3008 (class 2606 OID 34411)
+-- Name: cbt_jawaban cbt_jawaban_XIdUjian_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_jawaban
@@ -1702,8 +1910,8 @@ ALTER TABLE ONLY public.cbt_jawaban
 
 
 --
--- TOC entry 3006 (class 2606 OID 28794)
--- Name: cbt_jawaban cbt_jawaban_XNomerUjian_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3009 (class 2606 OID 34416)
+-- Name: cbt_jawaban cbt_jawaban_XNomerUjian_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_jawaban
@@ -1711,8 +1919,8 @@ ALTER TABLE ONLY public.cbt_jawaban
 
 
 --
--- TOC entry 3007 (class 2606 OID 28799)
--- Name: cbt_nilai cbt_nilai_XNomerUjian_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3010 (class 2606 OID 34421)
+-- Name: cbt_nilai cbt_nilai_XNomerUjian_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_nilai
@@ -1720,8 +1928,8 @@ ALTER TABLE ONLY public.cbt_nilai
 
 
 --
--- TOC entry 3008 (class 2606 OID 28804)
--- Name: cbt_paketsoal cbt_paketsoal_XGuru_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3011 (class 2606 OID 34426)
+-- Name: cbt_paketsoal cbt_paketsoal_XGuru_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_paketsoal
@@ -1729,8 +1937,8 @@ ALTER TABLE ONLY public.cbt_paketsoal
 
 
 --
--- TOC entry 3009 (class 2606 OID 28809)
--- Name: cbt_paketsoal cbt_paketsoal_XKodeMapel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3012 (class 2606 OID 34431)
+-- Name: cbt_paketsoal cbt_paketsoal_XKodeMapel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_paketsoal
@@ -1738,8 +1946,8 @@ ALTER TABLE ONLY public.cbt_paketsoal
 
 
 --
--- TOC entry 3010 (class 2606 OID 28814)
--- Name: cbt_pelajaran cbt_pelajaran_XKodeMateri_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3013 (class 2606 OID 34436)
+-- Name: cbt_pelajaran cbt_pelajaran_XKodeMateri_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_pelajaran
@@ -1747,8 +1955,8 @@ ALTER TABLE ONLY public.cbt_pelajaran
 
 
 --
--- TOC entry 3011 (class 2606 OID 28819)
--- Name: cbt_siswa cbt_siswa_XNamaKelas_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3014 (class 2606 OID 34441)
+-- Name: cbt_siswa cbt_siswa_XNamaKelas_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_siswa
@@ -1756,8 +1964,8 @@ ALTER TABLE ONLY public.cbt_siswa
 
 
 --
--- TOC entry 3012 (class 2606 OID 28824)
--- Name: cbt_siswa_pelajaran cbt_siswa_pelajaran_XIdPelajaran_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3015 (class 2606 OID 34446)
+-- Name: cbt_siswa_pelajaran cbt_siswa_pelajaran_XIdPelajaran_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_siswa_pelajaran
@@ -1765,8 +1973,8 @@ ALTER TABLE ONLY public.cbt_siswa_pelajaran
 
 
 --
--- TOC entry 3013 (class 2606 OID 28829)
--- Name: cbt_siswa_pelajaran cbt_siswa_pelajaran_XNomerUjian_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3016 (class 2606 OID 34451)
+-- Name: cbt_siswa_pelajaran cbt_siswa_pelajaran_XNomerUjian_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_siswa_pelajaran
@@ -1774,8 +1982,8 @@ ALTER TABLE ONLY public.cbt_siswa_pelajaran
 
 
 --
--- TOC entry 3014 (class 2606 OID 28834)
--- Name: cbt_siswa_ujian cbt_siswa_ujian_XIdUjian_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3017 (class 2606 OID 34456)
+-- Name: cbt_siswa_ujian cbt_siswa_ujian_XIdUjian_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_siswa_ujian
@@ -1783,8 +1991,8 @@ ALTER TABLE ONLY public.cbt_siswa_ujian
 
 
 --
--- TOC entry 3015 (class 2606 OID 28839)
--- Name: cbt_siswa_ujian cbt_siswa_ujian_XNomerUjian_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3018 (class 2606 OID 34461)
+-- Name: cbt_siswa_ujian cbt_siswa_ujian_XNomerUjian_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_siswa_ujian
@@ -1792,8 +2000,8 @@ ALTER TABLE ONLY public.cbt_siswa_ujian
 
 
 --
--- TOC entry 3016 (class 2606 OID 28844)
--- Name: cbt_soal cbt_soal_XKodeSoal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3019 (class 2606 OID 34466)
+-- Name: cbt_soal cbt_soal_XKodeSoal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_soal
@@ -1801,8 +2009,8 @@ ALTER TABLE ONLY public.cbt_soal
 
 
 --
--- TOC entry 3017 (class 2606 OID 28849)
--- Name: cbt_ujian cbt_ujian_XGuru_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3020 (class 2606 OID 34471)
+-- Name: cbt_ujian cbt_ujian_XGuru_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_ujian
@@ -1810,15 +2018,15 @@ ALTER TABLE ONLY public.cbt_ujian
 
 
 --
--- TOC entry 3018 (class 2606 OID 28854)
--- Name: cbt_ujian cbt_ujian_XKodeSoal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: paijo
+-- TOC entry 3021 (class 2606 OID 34476)
+-- Name: cbt_ujian cbt_ujian_XKodeSoal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cbt_ujian
     ADD CONSTRAINT "cbt_ujian_XKodeSoal_fkey" FOREIGN KEY ("XKodeSoal") REFERENCES public.cbt_paketsoal("XKodeSoal") ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2019-03-10 12:17:46 WIB
+-- Completed on 2019-05-17 15:51:09 UTC
 
 --
 -- PostgreSQL database dump complete
