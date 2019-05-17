@@ -77,6 +77,21 @@ class Home extends CI_Controller {
 		}
 		$this->db->update('cbt_config',[$n => $h]);
 	}
+
+	public function set_server()
+	{
+		if ($this->m_config->cfg['XServer']) {
+			$h=false;
+		} else {
+			$h=true;
+		}
+		if ($this->db->update('cbt_admin',['XServer' => $h])) {
+			$data['success']=true;
+		} else {
+			$data['success']=false;
+		}
+		echo(json_encode($data));
+	}
 	public function propesan($value='')
 	{
 		$data['submit']=[
