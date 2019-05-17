@@ -139,9 +139,12 @@ class Peserta_ujian extends CI_Controller {
 		if (!empty($d['ujian']->XKodeJurusan)) {
 			$this->db->where("XKodeJurusan",$d['ujian']->XKodeJurusan);
 		}
-		$this->db->order_by("XNomerUjian","ASC");
-		$d['siswa']=$this->db->get("cbt_siswa");
 
+		$this->db->order_by("XNomerUjian","ASC");
+
+
+		$d['siswa']=$this->db->get("cbt_siswa");
+		$this->load->view('head_meta',$d);
 		$this->load->view('admin/header',$d);
 		$this->load->view('admin/'.$this->judul.'_lihat',$d);
 		$this->load->view('admin/footer',$d);

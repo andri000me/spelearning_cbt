@@ -66,6 +66,7 @@ class Mapel extends CI_Controller {
 			'XNamaMapel' => strtoupper($this->input->post('XNamaMapel')), 
 			'XKKM' => (int) $this->input->post('XKKM'), 
 			'XMapelAgama' => $this->input->post('XMapelAgama'), 
+			"LastUpdate" => time()
 		];
 
 		if ($this->db->insert('cbt_mapel',$data['submit'])) {
@@ -86,6 +87,7 @@ class Mapel extends CI_Controller {
 			'XNamaMapel' => strtoupper($this->input->post('XNamaMapel')), 
 			'XKKM' => (int) $this->input->post('XKKM'), 
 			'XMapelAgama' => $this->input->post('XMapelAgama'), 
+			"LastUpdate" => time()
 		];
 
 		$this->db->where("Urut",$Urut);
@@ -143,7 +145,8 @@ class Mapel extends CI_Controller {
 		            	"XKodeMapel" =>strtoupper($rowData[0][0]),
 		            	"XNamaMapel" =>strtoupper($rowData[0][1]),
 		            	"XKKM" => (int) $rowData[0][2],
-		            	"XMapelAgama" =>$rowData[0][3],
+		            	"XMapelAgama" => $rowData[0][3],
+		            	"LastUpdate" => time()
 		            ];
 		            if (!empty($data['submit']['XKodeMapel']) AND !empty($data['submit']['XNamaMapel']) AND  !empty($data['submit']['XKKM']) AND !empty($data['submit']['XMapelAgama'])) {
 

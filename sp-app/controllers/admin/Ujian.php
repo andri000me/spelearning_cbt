@@ -1,6 +1,6 @@
 <?php 
 
-    // ditulis oleh  @supangat_oy
+// ditulis oleh  @supangat_oy
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 defined('SP_BUY') OR exit('APLIKASI EROR SILAHKAN HUBUNGI 083873272419');
@@ -151,6 +151,7 @@ class Ujian extends CI_Controller {
 			'XPdf' => $this->input->post('XPdf'), 
 			'XFilePdf' => $this->input->post('XFilePdf'), 
 			'XListening' => $this->input->post('XListening'), 
+			"LastUpdate" => time()
 		];
 		if ($this->db->insert('cbt_ujian',$data['submit'])) {
 			$this->m_config->pindah("admin/ujian",1,"Sukses Menyimpan");
@@ -190,6 +191,7 @@ class Ujian extends CI_Controller {
 			'XFilePdf' => $this->input->post('XFilePdf'), 
 			'XListening' => $this->input->post('XListening'), 
 			'XStatusUjian' => 1, 
+			"LastUpdate" => time()
 		];
 		$this->db->where("Urut",$Urut);
 		if ($this->db->update('cbt_ujian',$data['submit'])) {
@@ -203,7 +205,8 @@ class Ujian extends CI_Controller {
 	{
 		$this->db->where("Urut",$Urut);
 		if ($this->db->update('cbt_ujian',[
-			'XStatusUjian' => 9
+			'XStatusUjian' => 9,
+			"LastUpdate" => time()
 		])) {
 			$this->m_config->pindah("admin/ujian",1,"Sukses Menyimpan");
 		} else {
@@ -223,7 +226,6 @@ class Ujian extends CI_Controller {
 	}
 	function hapus($Urut){
 		$this->db->where("Urut",$Urut);
-
 		if ($this->db->delete('cbt_ujian')) {
 			$this->m_config->pindah("admin/ujian",1,"Sukses Menghapus");
 		} else {

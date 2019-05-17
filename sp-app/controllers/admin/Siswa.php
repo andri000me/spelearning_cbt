@@ -76,6 +76,7 @@ class Siswa extends CI_Controller {
 			'XRuang' => strtoupper($this->input->post('XRuang')), 
 			'XPilihan' => $this->input->post('XPilihan'), 
 			'XNamaKelas' => strtoupper($this->input->post('XNamaKelas')), 
+			"LastUpdate" => time()
 		];
 		// echo($data['submit']['XPilihan']);
 		// die();
@@ -132,6 +133,7 @@ class Siswa extends CI_Controller {
 			'XRuang' => strtoupper($this->input->post('XRuang')), 
 			'XPilihan' => $this->input->post('XPilihan'), 
 			'XNamaKelas' => strtoupper($this->input->post('XNamaKelas')), 
+			"LastUpdate" => time()
 		];
 		// echo($data['submit']['XPilihan']);
 		// die();
@@ -238,7 +240,7 @@ class Siswa extends CI_Controller {
 						'XPilihan' => strtoupper($rowData[0][10]), 
 						'XSetId' => $this->m_config->get_tahun_ajaran(), 
 						// 'XKodeSekolah' => $this->input->post('XKodeSekolah'), 
-
+						"LastUpdate" => time()
 					];
 
 				

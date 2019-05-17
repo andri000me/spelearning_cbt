@@ -64,7 +64,6 @@ class Pelajaran extends CI_Controller {
 		// print_r($data['Pelajaran']);
 		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
-		
 		$this->load->view('admin/'.$this->judul.'_info',$data);
 		$this->load->view('admin/footer',$data);
 	}
@@ -74,7 +73,6 @@ class Pelajaran extends CI_Controller {
 		$data['title']='Tambah '.$this->judul;
 		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
-		
 
 		if ($GLOBALS['lvl'] != 1 ) {
 			if ($this->m_config->config->XGuru2Admin != 1) {
@@ -103,8 +101,8 @@ class Pelajaran extends CI_Controller {
 		// echo $Urut;
 		$data['title']='Edit '.$this->judul;
 		$this->load->view('head_meta',$data);
+	
 		$this->load->view('admin/header',$data);
-		
 		
 		$this->db->select("u.*,u.Urut as XIdPelajaran, m.XNamaMapel");
 		$this->db->from("cbt_pelajaran u");
@@ -130,6 +128,7 @@ class Pelajaran extends CI_Controller {
 			'XTglBuat' => date("Y-m-d"),		 
 			'XStatusPelajaran' => 1, 
 			'XStatusToken' => $this->input->post('XStatusToken'), 
+			"LastUpdate" => time()
 			
 		];
 		if ($this->db->insert('cbt_pelajaran',$data['submit'])) {
@@ -151,7 +150,7 @@ class Pelajaran extends CI_Controller {
 			'XTglBuat' => date("Y-m-d"),		 
 			'XStatusPelajaran' => 1, 
 			'XStatusToken' => $this->input->post('XStatusToken'), 
-			
+			"LastUpdate" => time()
 		];
 		$this->db->where("Urut",$Urut);
 		if ($this->db->update('cbt_pelajaran',$data['submit'])) {
@@ -165,7 +164,8 @@ class Pelajaran extends CI_Controller {
 	{
 		$this->db->where("Urut",$Urut);
 		if ($this->db->update('cbt_pelajaran',[
-			'XStatusPelajaran' => 9
+			'XStatusPelajaran' => 9,
+			"LastUpdate" => time()
 		])) {
 			$this->m_config->pindah("admin/Pelajaran",1,"Sukses Menyimpan");
 		} else {

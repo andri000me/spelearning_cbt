@@ -93,6 +93,7 @@ class Soal extends CI_Controller {
 			// 'XStatusSoal' => $this->input->post('XStatusSoal'), 
 			'XTglBuat' => date("Y-m-d"), 
 			// 'XSemua' => $this->input->post('XSemua'), 
+			"LastUpdate" => time()
 		];
 		
 		if ($this->db->insert('cbt_paketsoal',$data['submit'])) {
@@ -128,6 +129,7 @@ class Soal extends CI_Controller {
 			'XTglBuat' => date("Y-m-d"), 
 			// 'XSemua' => $this->input->post('XSemua'), 
 			// 'XKodeSekolah' => $this->input->post('XKodeSekolah'), 
+			"LastUpdate" => time()
 		];
 
 		$data['pesan']='';
@@ -179,7 +181,8 @@ class Soal extends CI_Controller {
 	{
 		$this->db->where('Urut',$Urut);
 		if ($this->db->update("cbt_paketsoal",[
-			"XStatusSoal" => $s
+			"XStatusSoal" => $s,
+			"LastUpdate" => time()
 		])) {
 			$this->m_config->pindah("admin/soal",1,"Sukses Mengganti Status");
 		} else {
@@ -256,22 +259,30 @@ class Soal extends CI_Controller {
 						$data['submit']["XAgama"] = $rowData[0][20];
 					}					
 
-				   	$this->db->where('XNomerSoal',$rowData[0][0]);
-				   	$this->db->where('XKodeSoal',$m->XKodeSoal);
-		            if ($this->db->get('cbt_soal')->num_rows() > 0 ) {
-		            	$data['pesan'].='<div class="card-panel red white-text card-panel ">Nomer soal tidak tersedia / sudah digunakan'.$rowData[0][0].'</div>'; 
-		            } else {
-			            if ($this->db->insert('cbt_soal',$data['submit'])) {
-							$sukses++;			            	
+					
+					if (!empty($rowData[0][0])  AND !empty($rowData[0][1])  AND !empty($rowData[0][2])  AND !empty($rowData[0][2])) {
+
+					   	$this->db->where('XNomerSoal',$rowData[0][0]);
+					   	$this->db->where('XKodeSoal',$m->XKodeSoal);
+			            if ($this->db->get('cbt_soal')->num_rows() > 0 ) {
+			            	$data['pesan'].='<div class="card-panel red white-text card-panel ">Nomer soal tidak tersedia / sudah digunakan ('.$rowData[0][0].') </div>'; 
 			            } else {
-			            	$gagal++;
-			            	$data['pesan'].='<div class="card-panel	 red white-text card-panel ">Gagal Upload '.$rowData[0][2].'</div>'; 
+				            if ($this->db->insert('cbt_soal',$data['submit'])) {
+								$sukses++;			            	
+				            } else {
+				            	$gagal++;
+				            	$data['pesan'].='<div class="card-panel	 red white-text card-panel ">Gagal Upload No. ('.$rowData[0][0].') </div>'; 
+				            }
 			            }
-		            }
+
+					}
 		            
 		        }
 		        // echo $sukses;
 		        if ($sukses > 0) {
+
+		        	$this->db->where("Urut",$Urut)->update("cbt_paketsoal",["LastUpdate" => time()]);
+
 		        	$data['pesan'].='<div class="green white-text card-panel  padding-3">'.$sukses.' Data  sukses di import</div>'; 
 		        }
 		        if ($gagal > 0 ) {

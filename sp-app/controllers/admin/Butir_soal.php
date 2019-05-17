@@ -37,7 +37,8 @@ class Butir_soal extends CI_Controller {
 		if ($this->db->delete('cbt_soal')) {
 			$this->db->where("Urut",$Urut);
 			$this->db->update('cbt_paketsoal',[
-				"XStatusSoal" => "N"
+				"XStatusSoal" => "N",
+				"LastUpdate" => time()
 			]);
 			$this->m_config->pindah("admin/soal",1,"Sukses mengosongkan paket soal");
 		} else {
@@ -88,7 +89,9 @@ class Butir_soal extends CI_Controller {
 	public function proha($Urut,$id)
 	{
 		$this->db->where('Urut',$Urut);
+
 		if ($this->db->delete('cbt_soal')) {
+			$this->db->where("Urut",$id)->update("cbt_paketsoal",["LastUpdate" => time()]);
 			$this->m_config->pindah("admin/butir_soal/index/".$id,1,"Sukses Menghapus");
 		} else {
 			$this->m_config->pindah("admin/butir_soal/index/".$id,0,"Gagal Menghapus");
@@ -99,7 +102,7 @@ class Butir_soal extends CI_Controller {
 	function proses($t,$Urut=0){
 		// upload file pertanyyaan
 		// print_r($_FILES);
-		header("Content-type: text/css");
+		// header("Content-type: text/css");
 		$data['submit']=[];
 		$data['pesan']='';
 
@@ -154,11 +157,13 @@ class Butir_soal extends CI_Controller {
 		if ($t=="edit") {
 			$this->db->where("Urut",$Urut);
 			if ($this->db->update("cbt_soal",$data['submit'])) {
+				$this->db->where("Urut",$Urut)->update("cbt_paketsoal",["LastUpdate" => time()]);
 				$data['pesan'].='<div class="card-panel	green white-text card-panel ">Sukses Menyimpan</div>';
 				$this->m_config->pindah("admin/butir_soal/edit/".$Urut,2,$data['pesan']);
 			}
 		} else {
 			if ($this->db->insert("cbt_soal",$data['submit'])) {
+				$this->db->where("Urut",$Urut)->update("cbt_paketsoal",["LastUpdate" => time()]);
 				$data['pesan'].='<div class="card-panel	green white-text card-panel ">Sukses Menyimpan</div>';
 				$this->m_config->pindah("admin/butir_soal/index/".$Urut,2,$data['pesan']);
 			}

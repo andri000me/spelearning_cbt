@@ -121,6 +121,7 @@ class Pelajaran extends CI_Controller {
 						// 'XMulaiPelajaran' => $this->input->post('XMulaiPelajaran'), 
 						'XTokenPelajaran' => $token, 
 						'XGetIP' => $this->m_config->getUserIP(), 
+						"LastUpdate" => time()
             		];
             		if ($this->db->insert("cbt_siswa_pelajaran",$submit['siswa_Pelajaran'])) {
             			redirect("siswa/Pelajaran/cek/".$Urut."/".$token);

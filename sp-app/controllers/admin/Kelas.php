@@ -66,6 +66,7 @@ class Kelas extends CI_Controller {
 			'XKodeJurusan' => ucwords($this->input->post('XKodeJurusan')), 
 			'XKodeKelas' => ucwords($this->input->post('XKodeKelas')), 
 			'XStatusKelas' => 1, 
+			"LastUpdate" => time()
 		];
 		if ($this->db->insert('cbt_kelas',$data['submit'])) {
 			$this->m_config->pindah("admin/kelas",1,"Sukses Menyimpan");
@@ -84,6 +85,7 @@ class Kelas extends CI_Controller {
 			'XKodeJurusan' => ucwords($this->input->post('XKodeJurusan')), 
 			'XKodeKelas' => ucwords($this->input->post('XKodeKelas')), 
 			'XStatusKelas' => 1, 
+			"LastUpdate" => time()
 		];
 
 		$this->db->where("Urut",$Urut);
@@ -142,6 +144,7 @@ class Kelas extends CI_Controller {
 		            	"XNamaKelas" =>ucwords($rowData[0][1]),
 		            	"XKodeJurusan" =>ucwords($rowData[0][2]),
 		            	"XStatusKelas" =>1,
+		            	"LastUpdate" => time()
 		            ];
 		            $this->db->where('XNamaKelas',$rowData[0][1]);
 		            if ($this->db->get('cbt_kelas')->num_rows() > 0 ) {

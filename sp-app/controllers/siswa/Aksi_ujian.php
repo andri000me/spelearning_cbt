@@ -87,6 +87,7 @@ class Aksi_ujian extends CI_Controller {
 		}
 
 	}
+
 	function simpan_waktu(){
 		$Urut=$this->session->Urut;
 		$token=$this->session->token;

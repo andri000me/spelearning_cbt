@@ -99,6 +99,7 @@ class Ujian extends CI_Controller {
 						// 'XMulaiUjian' => $this->input->post('XMulaiUjian'), 
 						'XTokenUjian' => $token, 
 						'XGetIP' => $this->m_config->getUserIP(), 
+						"LastUpdate" => time()
             		];
             		if ($this->db->insert("cbt_siswa_ujian",$submit['siswa_ujian'])) {
             			redirect("siswa/ujian/cek/".$Urut."/".$token);
@@ -192,7 +193,7 @@ class Ujian extends CI_Controller {
 	            		// } 
 
 	            		$sisa_soal=$ujian->XPilGanda - $query['soal_tidak_acak']->num_rows();
-	            		echo $hit;
+	            		// echo $hit;
 	            		// die();
 	            		// end foreace
 	            		if ($sisa_soal > 0) {
@@ -464,7 +465,7 @@ class Ujian extends CI_Controller {
 			$this->db->where("XIdUjian",$Urut);
     		$this->db->where("XTokenUjian",$token);
     		$this->db->where("XNomerUjian",$GLOBALS['u']['XNomerUjian']);
-    		$this->db->update("cbt_siswa_ujian",['XStatusUjian' =>1]);
+    		$this->db->update("cbt_siswa_ujian",['XStatusUjian' =>1,"LastUpdate" => time()]);
 
 			redirect(base_url("siswa/ujian/selesai/".$Urut));
 		}

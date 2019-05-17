@@ -77,6 +77,7 @@ class Materi extends CI_Controller {
 			'XGuru' => $GLOBALS['u']['Username'], 
 			'XSetId' => $this->m_config->get_tahun_ajaran(), 
 			'XTglBuat' => date("Y-m-d"), 
+			"LastUpdate" => time()
 		];
 		
 		if ($this->db->insert('cbt_paketmateri',$data['submit'])) {
@@ -95,11 +96,14 @@ class Materi extends CI_Controller {
 			'XKd' => strtoupper($XKd),
 			'XJudul' => ucwords($XJudul),
 			'XIsiMateri'=>ucfirst($XIsiMateri),
-			'XUjian'=>json_encode($this->input->post("XUjian"))
+			'XUjian'=>json_encode($this->input->post("XUjian")),
+			"LastUpdate" => time()
 		];
 
 		$this->db->where("Urut",$Urut);
 		$m=$this->db->get("cbt_paketmateri")->row();
+
+
 		// print_r($_FILES['files']);
 		$file=(array) json_decode($m->XFile);
 		$filesCount = count($_FILES['files']['name']);
@@ -151,7 +155,7 @@ class Materi extends CI_Controller {
 				}
 			}
 			$this->db->where("Urut",$Urut);
-			if ($this->db->update("cbt_paketmateri",['XFile' => json_encode($files_sesudah)])) {
+			if ($this->db->update("cbt_paketmateri",['XFile' => json_encode($files_sesudah),"LastUpdate" => time()])) {
 				$this->m_config->pindah("admin/materi/edit_materi/".$Urut.'#submit',1,"Sukses Menghapus");
 			}
 
@@ -172,7 +176,8 @@ class Materi extends CI_Controller {
 	{
 		$this->db->where('Urut',$Urut);
 		if ($this->db->update("cbt_paketmateri",[
-			"XStatusMateri" => $s
+			"XStatusMateri" => $s,
+			"LastUpdate" => time()
 		])) {
 			$this->m_config->pindah("admin/materi",1,"Sukses Mengganti Status");
 		} else {

@@ -142,6 +142,7 @@ class Peserta_Pelajaran extends CI_Controller {
 		$this->db->order_by("XNomerUjian","ASC");
 		$d['siswa']=$this->db->get("cbt_siswa");
 
+		$this->load->view('head_meta',$d);
 		$this->load->view('admin/header',$d);
 		$this->load->view('admin/'.$this->judul.'_lihat',$d);
 		$this->load->view('admin/footer',$d);
@@ -194,6 +195,7 @@ class Peserta_Pelajaran extends CI_Controller {
 		$this->db->order_by("XNomerUjian","ASC");
 		$d['siswa']=$this->db->get("cbt_siswa");
 
+		$this->load->view('head_meta',$d);
 		$this->load->view('admin/header',$d);
 		$this->load->view('admin/'.$this->judul.'_lihat_tanya',$d);
 		$this->load->view('admin/footer',$d);
