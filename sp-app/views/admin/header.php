@@ -101,6 +101,12 @@
                           <span class="nav-text">Kelola Guru/Admin</span>
                       </a>
                     </li>
+                    <li>
+                      <a href="<?= base_url('admin/reset'); ?>" class="waves-effect waves-cyan">
+                          <i class="material-icons">delete_forever</i>
+                          <span class="nav-text">Reset</span>
+                      </a>
+                    </li>
                   </ul>
                 </li>
 
