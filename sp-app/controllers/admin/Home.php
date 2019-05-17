@@ -17,13 +17,15 @@ class Home extends CI_Controller {
 		$this->m_config->cek_sesi();
 
 	}
-	public function index()
-	{
-		$data['title']='Dashboard';
+	function filter(){
 		if ($GLOBALS['u']['login'] != 1) {
 			$this->db->where("p.XGuru",$GLOBALS['u']['Username']);
 		}
-
+	}
+	public function index()
+	{
+		$data['title']='Dashboard';
+		$this->filter();
 		$this->db->select("*,p.Urut as id_pesan");
 		$this->db->from("cbt_pesan p");
 		$this->db->join("cbt_user u","p.XGuru = u.Username");
@@ -35,19 +37,17 @@ class Home extends CI_Controller {
 		$data['total']["mapel"]=$this->db->get("cbt_mapel")->num_rows();
 		$data['total']["siswa"]=$this->db->get("cbt_siswa")->num_rows();
 
-		if ($GLOBALS['lvl'] != 1 ) {
-			if ($this->m_config->config->XGuru2Admin != 1) {
-				$this->db->where("XGuru",$GLOBALS['u']['Username']);
-			}
-		}
+		$this->filter();
 		$data['total']["ujian"]=$this->db->get("cbt_ujian")->num_rows();
 
-		if ($GLOBALS['lvl'] != 1 ) {
-			if ($this->m_config->config->XGuru2Admin != 1) {
-				$this->db->where("XGuru",$GLOBALS['u']['Username']);
-			}
-		}
+		$this->filter();
 		$data['total']["pelajaran"]=$this->db->get("cbt_pelajaran")->num_rows();
+
+		$this->filter();
+		$data['total']["materi"]=$this->db->get("cbt_paketmateri")->num_rows();
+
+		$this->filter();
+		$data['total']["soal"]=$this->db->get("cbt_paketsoal")->num_rows();
 		$this->load->view('head_meta',$data);
 		$this->load->view('admin/header',$data);
 		
