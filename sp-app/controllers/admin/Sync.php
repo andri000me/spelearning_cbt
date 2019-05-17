@@ -42,31 +42,32 @@ class Sync extends CI_Controller {
 			$res['pesan']=$data->pesan;
 		} else {
 			$res['status']=true;
-
-
+	
 			// sync user
 			foreach ($data->data->user as $key => $v) {
-				$db=$this->db->where([
-					'Username' => $v->Username
-				])->get('cbt_user');
+				if ($v->Username != "admin") {
+					$db=$this->db->where([
+						'Username' => $v->Username
+					])->get('cbt_user');
 
-				$v->LastSync=time();
-				if ($db->num_rows() > 0) {
-					$dd=$db->row();
+					$v->LastSync=time();
+					if ($db->num_rows() > 0) {
+						$dd=$db->row();
 
-					if ($dd->LastUpdate < $v->LastUpdate) {
-						$db=$this->db->where([
-							'Username' => $v->Username
-						])->update('cbt_user',$v);
+						if ($dd->LastUpdate < $v->LastUpdate) {
+							$db=$this->db->where([
+								'Username' => $v->Username
+							])->update('cbt_user',$v);
 
-						$res['data'][]='Update Username '.$v->Username;
+							$res['data'][]='Update Username '.$v->Username;
+						} else {
+							$res['data'][]='Skip Username '.$v->Username;
+						}
+
 					} else {
-						$res['data'][]='Skip Username '.$v->Username;
+						$this->db->insert("cbt_user",$v);
+						$res['data'][]='Insert  Username '.$v->Username;
 					}
-
-				} else {
-					$this->db->insert("cbt_user",$v);
-					$res['data'][]='Insert  Username '.$v->Username;
 				}
 				// $res[]=$v;
 			}
