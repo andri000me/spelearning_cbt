@@ -1,5 +1,6 @@
 <!--card stats start-->
 <?= $this->m_config->pesan(); ?>
+<a class="btn modal-trigger" href="#changeLog"> apa yang baru ? <i class="material-icons right">fiber_new</i></a>
 <div id="card-stats">
   <div class="row mt-1">
   	<a href="<?= base_url("admin/kelas"); ?>">
@@ -20,7 +21,7 @@
   	</a>
     <a href="<?= base_url("admin/mapel"); ?>">
     	<div class="col s12 m4 l3">
-	      <div class="card gradient-45deg-red-pink gradient-shadow min-height-100 white-text">
+		      <div class="card gradient-45deg-red-pink gradient-shadow min-height-100 white-text">
 	        <div class="padding-4">
 	          <div class="col s7 m7">
 	            <i class="material-icons background-round mt-5">local_library</i>
@@ -382,6 +383,46 @@
       		</div>
       	</form>
       </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+<!-- Modal Structure -->
+  <div id="changeLog" class="modal">
+    <div class="modal-content">
+      <h4>Apa yang baru ???</h4>
+		<ul class="timeline">
+            <?php
+            foreach (getChangelog() as $p) {
+            	$warna=["green","blue","red",'purple','indigo'];
+            	?>
+            <li class="time-label">
+                  <span class="<?= $warna[array_rand($warna)]; ?> white-text">
+                    <?= tgl_bilang($p['date'],1,1); ?>
+		          </span>
+            </li>
+            <!-- /.timeline-label -->
+
+            <!-- timeline item -->
+            <li>
+              <i class="fa fa-envelope <?= $warna[array_rand($warna)]; ?> white-text"></i>
+              <div class="timeline-item">
+                <h3 class="timeline-header">
+                	<?= $p['author']; ?>
+                </h3>
+                <div class="timeline-body">
+                  <?= $p['message']; ?>
+                </div>
+              </div>
+            </li>
+            <!-- END timeline item -->
+
+            	<?php
+            }
+            ?>
+          </ul>
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
