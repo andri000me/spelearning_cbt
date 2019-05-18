@@ -19,7 +19,7 @@ class Home extends CI_Controller {
 	}
 	function filter(){
 		if ($GLOBALS['u']['login'] != 1) {
-			$this->db->where("p.XGuru",$GLOBALS['u']['Username']);
+			$this->db->where("XGuru",$GLOBALS['u']['Username']);
 		}
 	}
 	public function index()
