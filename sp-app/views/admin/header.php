@@ -110,6 +110,29 @@
                   </ul>
                 </li>
 
+
+                <li>
+                  <div class="collapsible-header">
+                      <i class="material-icons">sync</i>
+                      <span class="nav-text">Import / Export Data</span>
+                  </div>
+                  <ul class="collapsible-body">
+                    <li>
+                      <a href="<?= base_url('admin/importexport/kelas'); ?>" class="waves-effect waves-cyan">
+                          <i class="material-icons">class</i>
+                          <span class="nav-text">Database Kelas</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="<?= base_url('admin/importexport/Siswa'); ?>" class="waves-effect waves-cyan">
+                          <i class="material-icons">people</i>
+                          <span class="nav-text">Database Siswa</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+
                 <li>
                   <div class="collapsible-header">
                       <i class="material-icons">dns</i>
@@ -275,7 +298,14 @@
               </div>
 
             </li>
-       
+            <li>
+              <div class="center-align">
+                <small>Copyright 2019 &copy;</small>
+                <b>
+                  supangat
+                </b>
+              </div>
+            </li>       
       
           </ul>
 

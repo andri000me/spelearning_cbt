@@ -66,13 +66,13 @@
                 </span>
                 <span>Masuk Halaman Admin/ Guru</span>
                 <p>
-                  <div class="input-field">
-                    <input  autocomplete="off" type="text" name="user" required="required">
+                  <div class="">
                     <label>Username</label>
+                    <input  autocomplete="off" type="text" name="user" required="required">
                   </div>
-                  <div class="input-field">
-                    <input  autocomplete="off" type="password" name="pwd" required="required">
+                  <div class="">
                     <label>Password</label>
+                    <input  autocomplete="off" type="password" name="pwd" required="required">
                   </div>
                   <?php
                   if (isset($this->session->pesan)) {
@@ -83,7 +83,7 @@
                     <?php
                   }
                   ?>
-                  <div class="input-field">
+                  <div class="">
                     <button style="width: 100%" type="submit" class="btn btn-block green">Masuk</button>
                   </div>
                 </p>

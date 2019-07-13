@@ -59,7 +59,9 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
 
-$autoload['libraries'] = array('session');
+$autoload['libraries'] = array('session','blade');
+
+
 $CI =& get_instance();
 // $this->load->database();
 // print_r($CI =& get_instance());

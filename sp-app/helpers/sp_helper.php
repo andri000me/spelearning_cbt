@@ -29,6 +29,7 @@ function getChangelog($n=20){
 	    // Proceed If There Are Any Lines
 	    if (!empty($line))
 	    {
+    
 	        // Commit
 	        if (strpos($line, 'commit') !== false)
 	        {

@@ -12,6 +12,7 @@ defined('SP_BUY') OR exit('APLIKASI EROR SILAHKAN HUBUNGI 083873272419');
 
 
 class Home extends CI_Controller {
+
 	function __construct(){
 		parent::__construct();
 		$this->m_config->cek_sesi();
@@ -22,6 +23,25 @@ class Home extends CI_Controller {
 			$this->db->where("XGuru",$GLOBALS['u']['Username']);
 		}
 	}
+/**
+ * Get latest changes.
+ *
+ * @param string Commit ('HEAD').
+ * @param int Number of changes (10).
+ * @return array Changes.
+ */
+public function getChangeLog($commit='HEAD', $n=10)
+{
+    if ($n === null) $n = '';
+    else $n = ' -'.$n;
+    $cmd = sprintf('GIT_DIR=%s '.Pluf::f('git_path', 'git').' log%s --date=iso --pretty=format:\'%s\' %s',
+                   escapeshellarg($this->repo), $n, $this->mediumtree_fmt,
+                   escapeshellarg($commit));
+    $out = array();
+    $cmd = Pluf::f('idf_exec_cmd_prefix', '').$cmd;
+    self::exec('IDF_Scm_Git::getChangeLog', $cmd, $out);
+    return self::parseLog($out);
+}
 	public function index()
 	{
 		$data['title']='Dashboard';
